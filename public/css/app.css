@@ -1,0 +1,35 @@
+.parallax-container {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    height: 100vh;
+}
+
+/* =========== LANDING PAGE STYLES =========== */
+
+/* Hero Text */
+.hero-text {
+    font-family: 'Gamja Flower', cursive;
+    color: white;
+    font-size: 5em:
+}
+
+.hero-text .main-text {
+    font-size: 325%;
+}
+
+/*  Landing Button */
+a.btn-landing {
+    text-transform: uppercase;
+    margin-top: 20px;
+    font-size: 175%;
+    border: 2px solid #00a8ff;
+    padding: 5px 25px;
+    border-radius: 25px;
+    -webkit-transition: background-color 0.2s, border 0.2s, color 0.2s;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+a.btn-landing:hover {
+    color: white;
+    background-color: #0097e6;
+}
