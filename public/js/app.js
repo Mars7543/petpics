@@ -31,7 +31,7 @@ $(document).ready(function(){
             setTimeout(() => {
                 a3.fadeToggle(150);
                 a3.animate({left: '+=15px'});
-            }, 250);
+            }, 200);
 
             active = 1;
         } else {
@@ -48,7 +48,7 @@ $(document).ready(function(){
             setTimeout(() => {
                 a3.fadeToggle(150);
                 a3.animate({left: '-=15px'});
-            }, 205);
+            }, 200);
 
             active = 0;
         }
