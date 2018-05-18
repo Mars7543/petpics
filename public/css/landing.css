@@ -30,16 +30,21 @@ nav {
     padding: 10px 22px;
     border-radius: 20px;
 
+    background: transparent;
+
     font-size: 110%;
     color: white;
     text-transform: none !important;
 
+    background-position: 0 -200px;
     border: 1.5px solid #2ecc71;
-    background: none;
+    -webkit-transition: all 0.35s;
 }
 
 #nav-mobile li button:hover {
-    background-color: #27ae60;
+    background-position: 0;
+    opacity: 1;
+    background: linear-gradient(0deg,#2ecc71 0%, #44bd32 100%);
 }
 
 .favicon-navbar {
