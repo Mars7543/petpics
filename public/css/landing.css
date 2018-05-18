@@ -1,0 +1,93 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+nav {
+    position: absolute;
+    box-shadow: none;
+    background: none;
+    margin-top: 8px;
+}
+
+#nav-mobile li a{
+    padding: 0;
+    margin: 0 15px;
+    background-color: transparent;
+    height: 50px;
+    font-size: 110%;
+}
+
+#nav-mobile li a:hover{
+    border-bottom: 2.25px solid #2ecc71;
+}
+
+#nav-mobile li button {
+    margin-left: 8px;
+    padding: 10px 22px;
+    border-radius: 20px;
+
+    font-size: 110%;
+    color: white;
+    text-transform: none !important;
+
+    border: 1.5px solid #2ecc71;
+    background: none;
+}
+
+#nav-mobile li button:hover {
+    background-color: #27ae60;
+}
+
+.favicon-navbar {
+    position: absolute;
+    width: 75px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.brand-logo {
+    margin-left: 95px;
+}
+
+/* Hero Img */
+.landing-container {
+    background-image: url("/static/img/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+/* Hero Text */
+#hero-main-text {
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-size: 4em;
+    text-shadow: 2px 1.75px #2f3640;
+    line-height: 1.3;
+}
+
+#hero-sub-text {
+    font-size: 1.7em;
+    line-height: 0.5  ;
+}
+
+/* Landing Button */
+a.btn.btn-large#btn-landing {
+    margin-top: 20px;
+    padding: 0 30px;
+    border-radius: 50px;
+    background: linear-gradient(45deg,#0984e3 0%, #74b9ff 100%);
+}
+
+/* Footer */
+footer.page-footer {
+    background-color: #171a21;
+    padding: 0;
+}
+
+footer .footer-copyright {
+    padding-left: 25px !important;
+}

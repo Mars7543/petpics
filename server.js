@@ -16,3 +16,6 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
    console.log(`Server running on port ${PORT}...`);
 });
+
+// TODO: Make Landing Page Repsonsive (Including SideNav for Mobile)
+// TODO: Make Header Navbar
