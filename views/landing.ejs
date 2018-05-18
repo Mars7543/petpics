@@ -44,7 +44,10 @@
 <footer class="page-footer">
     <div class="footer-copyright">
         Copyright ©
-        <script type="text/javascript">document.write(new Date().getFullYear());</script>
+        <script type="text/javascript">
+            var date = new Date().getFullYear();
+            document.write(date !== 2018 ? `2018-${date}` : date);
+        </script>
         PuppyPics All rights reserved.
     </div>
 </footer>
