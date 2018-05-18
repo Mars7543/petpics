@@ -1,0 +1,22 @@
+/* Body */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Footer */
+footer.page-footer {
+    background-color: #171a21;
+    padding: 0;
+}
+
+footer .footer-copyright {
+    padding-left: 25px !important;
+}
