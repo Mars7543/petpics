@@ -1,6 +1,13 @@
 $(document).ready(function(){
+    // Materialize Init
     $('.parallax').parallax();
+    $('.sidenav').sidenav({edge: 'right'});
 
+    // Landing Page Animation
+    landingAnimation();
+});
+
+function landingAnimation() {
     var logo = $('.logo');
 
     var nav = $('#navbar');
@@ -10,10 +17,6 @@ $(document).ready(function(){
     var a3 = $('.more-info');
 
     var active = 0;
-
-    logo.mouseover(function() {
-        logo.css('animation', 'none');
-    });
 
     logo.click(function(){
 
@@ -53,4 +56,6 @@ $(document).ready(function(){
             active = 0;
         }
     });
-});
+
+    logo.trigger('click');
+}

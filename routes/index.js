@@ -5,4 +5,8 @@ router.get('/', (req, res) => {
    res.render('landing');
 });
 
+router.get('/puppies', (req, res) => {
+    res.render('puppies');
+});
+
 module.exports = router;

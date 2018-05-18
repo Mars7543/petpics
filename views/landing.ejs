@@ -1,23 +1,52 @@
 <% include ./partials/header %>
 
-<img src="/static/img/favicon.png" alt="logo" class="logo">
+<img onclick="location.href='/'" src="/static/img/favicon.png" class="favicon-navbar" alt="favicon">
 
-<div id="navbar">
-    <a href="#" class="navbar-link more-info">More Info</a>
-    <a href="#" class="navbar-link login">Login</a>
-    <a href="#" class="navbar-link sign-up">Sign Up</a>
-</div>
-
-<div class="parallax-container valign-wrapper">
-    <div id="hero-text" class="container center">
-        <h3 class="main-text">Wanna See Some Cute Puppies?</h3>
-        <h3 class="main-text" style="margin-top: -5px; margin-bottom: 40px;">We've Got You Covered.</h3>
-
-        <a href="#" class="btn-landing btn-full">Puppies!</a>
-        <a href="#" class="btn-landing btn-ghost">I'm Already Confused.</a>
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">PuppyPics</a>
+        <ul id="nav-mobile" class="right sidenav-trigger">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Login</a></li>
+            <li><button href="#" class="waves-effect waves-effect-light">Sign Up</button></li>
+        </ul>
     </div>
+</nav>
 
-    <div class="parallax"><img src="/static/img/hero.jpg"></div>
+<div class="landing-container valign-wrapper">
+    <div class="container" style="margin-top: -30px;">
+        <div class="row">
+            <div class="col s12">
+                <div class="white-text center">
+                    <h1 id="hero-main-text">PuppyPics</h1>
+                    <h3 id="hero-sub-text">A Fast and Easy Way to Share Pictures of Adorable Puppies.</h3>
+                    <h3 id="hero-sub-text">Explore a World of Fluffy Little Creatures!</h3>
 
+                    <a href="/puppies" id="btn-landing" class="btn btn-large waves-effect waves-effect-light z-depth-5">Join Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<main>
+    <section id="features">
+
+    </section>
+
+    <section id="about-us">
+
+    </section>
+</main>
+
+<footer class="page-footer">
+    <div class="footer-copyright">
+        Copyright ©
+        <script type="text/javascript">document.write(new Date().getFullYear());</script>
+        PuppyPics All rights reserved.
+    </div>
+</footer>
+
 <% include ./partials/footer %>
