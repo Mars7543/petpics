@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Puppy Pics</title>
         <link rel="stylesheet" href="/static/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500" rel="stylesheet">
         <link rel="icon" type="image/png" href="/static/img/favicon.png">
         <link rel="stylesheet" href="/static/css/app.css">
@@ -13,4 +14,22 @@
         <script type="text/javascript" src="/static/js/app.js"></script>
     </head>
     <body>
+        <ul id="account-options" class="dropdown-content">
+            <li><a href="#">miguelaroberts09@gmail.com</a></li>
+            <li><a href="#">Miguel Roberts</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+
+        <nav id="main-nav">
+            <div class="nav-wrapper">
+                <img class="favicon-navbar" src="/static/img/favicon.png" alt="favicon">
+                <a href="/" class="brand-logo">PuppyPics</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="dropdown-trigger" href="#!" data-target="account-options">Mars7543<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+
         <main>

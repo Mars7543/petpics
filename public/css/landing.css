@@ -40,7 +40,7 @@ nav {
 }
 
 #nav-mobile li button:hover {
-    background: linear-gradient(0deg,#2ecc71 0%, #44bd32 100%);
+    background: linear-gradient(45deg,#2ecc71 0%, #44bd32 100%);
 }
 
 .favicon-navbar {
