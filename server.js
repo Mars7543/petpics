@@ -18,4 +18,4 @@ app.listen(PORT, () => {
 });
 
 // TODO: Make Landing Page Repsonsive (Including SideNav for Mobile)
-// TODO: Make Header Navbar
+// TODO: Make Main Navbar

@@ -17,8 +17,8 @@ nav#landing-nav {
     background-color: transparent;
     height: 50px;
     font-size: 110%;
-    border-bottom: 2.3px solid transparent;
-    -webkit-transition: border 0.15s;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: border 0.35s;
 }
 
 #nav-mobile li a:hover{
