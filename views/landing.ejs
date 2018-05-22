@@ -9,40 +9,38 @@
 </div>
 
 <main class="valign-wrapper">
-    <div class="container center white-text">
-        <div id="hero-text-wrapper">
-            <h1 id="hero-main-text">PetPics</h1>
-            <h3 id="hero-sub-text">A Fast & Easy Way to View & Share Pet Pictures.</h3>
-            <h3 id="hero-sub-text-2">Explore a Whole World of Adorable Animals!</h3>
-        </div>
+    <div class="container hero-text-wrapper center white-text">
+        <h1 id="hero-main-text">PetPics</h1>
+        <h3 id="hero-sub-text">A Fast & Easy Way to View & Share Pet Pictures.</h3>
+        <h3 id="hero-sub-text-2">Explore a Whole World of Adorable Animals!</h3>
 
         <form id="signup" action="/signup" method="post">
             <div class="row">
-                <div class="input-field col s3 offset-s3">
+                <div class="input-field col s6 m3 offset-m3">
                     <input type="text" name="firstName" id="firstName" class="validate" required>
                     <label for="firstName">First Name</label>
                 </div>
 
-                <div class="input-field col s3">
+                <div class="input-field col s6 m3">
                     <input type="text" name="lastName" id="lastName" class="validate" required>
                     <label for="lastName">Last Name</label>
                 </div>
             </div>
 
             <div class="row">
-                <div class="input-field col s6 offset-s3">
+                <div class="input-field col s12 m6 offset-m3">
                     <input type="email" name="email" id="email" class="validate" required>
                     <label for="email">Email</label>
                 </div>
             </div>
 
             <div class="row">
-                <div class="input-field col s3 offset-s3">
+                <div class="input-field col s6 m3 offset-m3">
                     <input type="text" name="username" id="username" class="validate" required>
                     <label for="username">Username</label>
                 </div>
 
-                <div class="input-field col s3">
+                <div class="input-field col s6 col m3">
                     <input type="password" name="password" id="password-signup" class="validate" required>
                     <label for="password-signup">Password</label>
                 </div>
@@ -50,36 +48,39 @@
 
             <div class="row button-wrapper">
                 <div class="col s12">
-                    <button class="btn btn-large waves-effect waves-light z-depth-5" id="btn-landing">Sign up</button>
+                    <button class="btn btn-large btn-landing waves-effect waves-light z-depth-5" >Sign up</button>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col s6 offset-s3">Already Have an Account? <a class="change-forms-text" onclick="changeForms()">Login</a></div>
+                <div class="col s12 m6 offset-m3">Already Have an Account? <a class="change-forms-text" onclick="changeForms()">Login</a></div>
             </div>
         </form>
 
         <form id="login" class="white-text" action="/login" method="post">
-            <div class="row form-row">
-                <div class="input-field col s4 offset-s3">
+            <div class="row">
+                <div class="input-field col s6 m4 offset-s3 offset-m4">
                     <input type="text" name="username" id="username-login" class="validate">
                     <label for="username-login">Username or Email</label>
-                </div>
-
-                <div class="input-field col s3">
-                    <input type="password" name="password" id="password-login" class="validate">
-                    <label for="password-login">Password</label>
-                </div>
-            </div>
-
-            <div class="row button-wrapper">
-                <div class="col s12">
-                    <button class="btn btn-large waves-effect waves-light z-depth-5" id="btn-landing">Login</button>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col s6 offset-s3">Don't Have an Account? <a class="change-forms-text" onclick="changeForms()">Sign Up</a></div>
+                <div class="input-field col s6 m4 offset-s3 offset-m4">
+                    <input type="password" name="password" id="password-login" class="validate">
+                    <label for="password-login">Password</label>
+                </div>
+
+            </div>
+
+            <div class="row button-wrapper">
+                <div class="col s12">
+                    <button class="btn btn-large btn-landing waves-effect waves-light z-depth-5">Login</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m6 offset-m3">Don't Have an Account? <a class="change-forms-text" onclick="changeForms()">Sign Up</a></div>
             </div>
         </form>
     </div>

@@ -6,15 +6,15 @@ router.use(bodyParser.urlencoded({extended: true}));
 
 router.get('/', (req, res) => {
    res.render('landing', {
-       css: '/static/css/landing/app.css',
-       js:  '/static/js/landing/app.js'
+       css:      '/static/css/landing/app.css',
+       queries:  '/static/css/landing/queries.css'
    });
 });
 
 router.get('/puppies', (req, res) => {
     res.render('puppies', {
-        css: '/static/css/puppies/app.css',
-        js:  '/static/js/puppies/app.js'
+        css:     '/static/css/puppies/app.css',
+        queries: '/static/css/puppies/queries.css',
     });
 });
 

@@ -1,0 +1,18 @@
+/* Mobile Phones */
+@media only screen and (max-width: 650px)  {
+    #hero-sub-text, #hero-sub-text-2 {
+        font-size: 1.25em;
+    }
+
+}
+
+@media only screen and (max-width: 425px)  {
+    #hero-main-text {
+        font-size: 3.5em;
+    }
+
+    #hero-sub-text, #hero-sub-text-2 {
+        font-size: 1em;
+    }
+
+}

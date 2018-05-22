@@ -1,17 +1,29 @@
 $(document).ready(function(){
+    sliderInit();
+});
+
+// ============== LANDING PAGE SCRIPTS ============== \\
+function sliderInit() {
     $('.slider').slider({
         indicators: false,
         duration: 800,
-        interval: 3550
+        interval: 3750
     });
 
+    setSliderSize();
+}
+
+function setSliderSize() {
     var slider = $('.slider');
     var body = $('body');
 
     slider.css('height', body.css('height'));
-});
 
-// ============== LANDING PAGE SCRIPTS ============== \\
+    window.addEventListener( "orientationchange", function( event ) {
+        setSliderSize();
+    });
+}
+
 function changeForms() {
     var loginForm = $('#login');
     var signupForm = $('#signup');

@@ -18,22 +18,17 @@
     margin-bottom: 0;
 }
 
-#hero-sub-text {
+#hero-sub-text, #hero-sub-text-2 {
     font-size: 1.8em;
 }
 
 #hero-sub-text-2 {
-    font-size: 1.8em;
     margin-top: -1px;
 }
 
 /* Form(s) */
-form#login {
+form#signup {
     display: none;
-}
-
-form#login .row.form-row {
-    margin-left: -80px;
 }
 
 .change-forms-text {
@@ -98,7 +93,7 @@ form#login input{
 }
 
 /* Landing Button */
-button.btn.btn-large#btn-landing {
+button.btn.btn-large.btn-landing {
     margin-top: 15px;
     margin-bottom: 10px;
     padding: 0 30px;
