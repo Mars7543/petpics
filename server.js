@@ -18,4 +18,3 @@ app.listen(PORT, () => {
 });
 
 // TODO: Make Landing Page Repsonsive
-// TODO: Make Landing Page Background Pictures Fade / Slide 

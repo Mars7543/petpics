@@ -1,10 +1,18 @@
 <% include ./partials/header %>
 
+<div class="slider fullscreen" style="z-index: -10">
+    <ul class="slides">
+        <li><img src="/static/img/hero.jpg"></li>
+        <li><img src="/static/img/hero-2.jpg"></li>
+        <li><img src="/static/img/hero-3.jpg"></li>
+    </ul>
+</div>
+
 <main class="valign-wrapper">
     <div class="container center white-text">
         <div id="hero-text-wrapper">
             <h1 id="hero-main-text">PetPics</h1>
-            <h3 id="hero-sub-text">A Fast & Easy Way to Share Pictures of your Beloved Pets.</h3>
+            <h3 id="hero-sub-text">A Fast & Easy Way to View & Share Pet Pictures.</h3>
             <h3 id="hero-sub-text-2">Explore a Whole World of Adorable Animals!</h3>
         </div>
 
@@ -52,14 +60,14 @@
         </form>
 
         <form id="login" class="white-text" action="/login" method="post">
-            <div class="row">
-                <div class="input-field col s3 offset-s3">
-                    <input type="text" name="username" id="username-login" class="validate" required>
+            <div class="row form-row">
+                <div class="input-field col s4 offset-s3">
+                    <input type="text" name="username" id="username-login" class="validate">
                     <label for="username-login">Username or Email</label>
                 </div>
 
                 <div class="input-field col s3">
-                    <input type="password" name="password" id="password-login" class="validate" required>
+                    <input type="password" name="password" id="password-login" class="validate">
                     <label for="password-login">Password</label>
                 </div>
             </div>

@@ -1,5 +1,14 @@
 $(document).ready(function(){
-    
+    $('.slider').slider({
+        indicators: false,
+        duration: 800,
+        interval: 3550
+    });
+
+    var slider = $('.slider');
+    var body = $('body');
+
+    slider.css('height', body.css('height'));
 });
 
 // ============== LANDING PAGE SCRIPTS ============== \\

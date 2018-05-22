@@ -3,11 +3,8 @@
 }
 
 /* Hero Img */
-body {
-    background-image: url("/static/img/hero.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+.slider.fullscreen{
+    position: absolute;
 }
 
 /* Hero Text */
@@ -35,6 +32,10 @@ form#login {
     display: none;
 }
 
+form#login .row.form-row {
+    margin-left: -80px;
+}
+
 .change-forms-text {
     cursor: pointer;
     color: #74b9ff;
@@ -45,7 +46,7 @@ form#signup .input-field label,
 form#login .input-field label {
     font-size: 115%;
     font-weight: 500;
-    color: #74b9ff;
+    color: white;
 }
 
 /* label focus color */
