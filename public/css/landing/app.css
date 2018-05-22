@@ -2,96 +2,109 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Navbar */
-nav#landing-nav {
-    position: absolute;
-    box-shadow: none;
-    background-color: transparent;
-    margin-top: 8px;
-    padding-right: 10px;
-}
-
-#nav-mobile li a{
-    padding: 0;
-    margin: 0 15px;
-    background-color: transparent;
-    height: 50px;
-    font-size: 110%;
-    border-bottom: 2px solid transparent;
-    -webkit-transition: border 0.35s;
-}
-
-#nav-mobile li a:hover{
-    border-bottom: 2.25px solid #2ecc71;
-}
-
-#nav-mobile li button {
-    margin-left: 8px;
-    padding: 10px 22px;
-    border-radius: 20px;
-
-    background: transparent;
-
-    font-size: 110%;
-    color: white;
-    text-transform: none !important;
-
-    border: 1.5px solid #2ecc71;
-}
-
-#nav-mobile li button:hover {
-    background: linear-gradient(45deg,#2ecc71 0%, #44bd32 100%);
-}
-
-.favicon-navbar {
-    position: absolute;
-    width: 75px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 2;
-}
-
-.brand-logo {
-    margin-left: 95px;
-}
-
 /* Hero Img */
-.landing-container {
+body {
     background-image: url("/static/img/hero.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height: 100vh;
 }
 
 /* Hero Text */
 #hero-main-text {
+    display: inline-block;
     font-weight: 400;
     letter-spacing: 0.5px;
     font-size: 4em;
     text-shadow: 2px 1.75px #2f3640;
     line-height: 1.3;
+    margin-bottom: 0;
 }
 
 #hero-sub-text {
-    font-size: 1.7em;
-    line-height: 0.5  ;
+    font-size: 1.8em;
+}
+
+#hero-sub-text-2 {
+    font-size: 1.8em;
+    margin-top: -1px;
+}
+
+/* Form(s) */
+form#login {
+    display: none;
+}
+
+.change-forms-text {
+    cursor: pointer;
+    color: #74b9ff;
+}
+
+/* label color */
+form#signup .input-field label,
+form#login .input-field label {
+    font-size: 115%;
+    font-weight: 500;
+    color: #74b9ff;
+}
+
+/* label focus color */
+form#signup .input-field input:focus + label,
+form#login .input-field input:focus + label {
+    color: #74b9ff;
+}
+
+/* label underline focus color */
+form#signup .input-field input:focus,
+form#login .input-field input:focus {
+    border-bottom: 1px solid #74b9ff;
+    box-shadow: 0 1px 0 0 #2980b9;
+}
+
+/* valid color */
+form#signup .input-field input.valid,
+form#login .input-field input.valid {
+    border-bottom: 1px solid #2ecc71;
+    box-shadow: 0 1px 0 0 #27ae60;
+}
+
+/* invalid color */
+form#signup .input-field input.invalid,
+form#login .input-field input.invalid {
+    border-bottom: 1px solid #eb4d4b;
+    box-shadow: 0 1px 0 0 #c0392b;
+}
+/* icon prefix focus color */
+form#signup .input-field .prefix.active,
+form#login .input-field .prefix.active {
+    color: #74b9ff;
+}
+
+form#signup,
+form#login{
+    margin-top: 45px;
+}
+
+form#signup .row,
+form#login .row{
+    margin-top: -15px;
+}
+
+form#signup input,
+form#login input{
+    font-size: 125%;
+    color: white;
 }
 
 /* Landing Button */
-a.btn.btn-large#btn-landing {
-    margin-top: 20px;
+button.btn.btn-large#btn-landing {
+    margin-top: 15px;
+    margin-bottom: 10px;
     padding: 0 30px;
     border-radius: 50px;
     background: linear-gradient(45deg,#0984e3 0%, #74b9ff 100%);
 }
 
-/* Footer */
-footer.page-footer {
-    background-color: #171a21;
-    padding: 0;
-}
-
-footer .footer-copyright {
-    padding-left: 25px !important;
+.button-wrapper {
+    margin-top: -25px;
 }

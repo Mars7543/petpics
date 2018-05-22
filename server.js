@@ -17,5 +17,5 @@ app.listen(PORT, () => {
    console.log(`Server running on port ${PORT}...`);
 });
 
-// TODO: Make Landing Page Repsonsive (Including SideNav for Mobile)
-// TODO: Make Main Navbar
+// TODO: Make Landing Page Repsonsive
+// TODO: Make Landing Page Background Pictures Fade / Slide 

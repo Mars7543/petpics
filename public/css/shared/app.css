@@ -1,10 +1,7 @@
-/* Body */
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-
-    font-family: 'Poppins', sans-serif;
 }
 
 main {
@@ -13,8 +10,12 @@ main {
 
 /* Footer */
 footer.page-footer {
-    background-color: #171a21;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
     padding: 0;
+    background-color: #171a21;
 }
 
 footer .footer-copyright {
