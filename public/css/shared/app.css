@@ -8,6 +8,41 @@ main {
     flex: 1 0 auto;
 }
 
+/* Nav */
+nav {
+    width: 100%;
+    height: 60px;
+    background-image: linear-gradient(to right, #4fc3f7, #3fb9f3, #2fafee, #1da5ea, #039be5);
+}
+
+#brand-logo {
+    position: absolute;
+    font-size: 2.5em;
+    color: white;
+    margin-top: -2px;
+    margin-left: 25px;
+}
+
+#search-field {
+    width: 40%;
+    margin-left: 30%;
+    height: 100%;
+    background-color: #4FC3F7;
+}
+
+#search::placeholder{
+    font-size: 110%;
+    color: white;
+}
+
+.input-active {
+    background-color: white !important;
+}
+
+nav .input-field label i.icon-active {
+    color: black !important;
+}
+
 /* Footer */
 footer.page-footer {
     position:fixed;

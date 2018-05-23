@@ -7,7 +7,8 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.get('/', (req, res) => {
    res.render('landing', {
        css:      '/static/css/landing/app.css',
-       queries:  '/static/css/landing/queries.css'
+       queries:  '/static/css/landing/queries.css',
+       nonav: true
    });
 });
 

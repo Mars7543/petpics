@@ -26,5 +26,20 @@
 
     </head>
     <body>
+        <header>
+            <% if (!locals.nonav) { %>
 
-        <header></header>
+                <nav>
+                    <div class="nav-wrapper">
+                        <a href="/puppies" id="brand-logo">PetPics</a>
+
+                        <div id="search-field" class="input-field">
+                            <input id="search" type="search" placeholder="Search..." required>
+                            <label id="search-label"  style="margin-top: -2px;" class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i id="dropdown-icon" onclick="event.stopPropagation()" class="material-icons hidden">arrow_drop_down</i>
+                        </div>
+                    </div>
+                </nav>
+
+            <% } %>
+        </header>

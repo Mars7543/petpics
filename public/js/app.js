@@ -38,3 +38,5 @@ function changeForms() {
         });
     }
 }
+
+// ============== MAIN PAGE SCRIPTS ============== \\
