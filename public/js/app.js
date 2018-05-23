@@ -1,5 +1,10 @@
 $(document).ready(function(){
     sliderInit();
+    $('.fixed-action-btn').floatingActionButton();
+    $('.dropdown-trigger').dropdown({coverTrigger: false, hover: true});
+    // $('#dropdown-icon').click(() => {
+    //     $('#search').focus();
+    // });
 });
 
 // ============== LANDING PAGE SCRIPTS ============== \\

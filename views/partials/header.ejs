@@ -34,12 +34,32 @@
                         <a href="/puppies" id="brand-logo">PetPics</a>
 
                         <div id="search-field" class="input-field">
-                            <input id="search" type="search" placeholder="Search..." required>
-                            <label id="search-label"  style="margin-top: -2px;" class="label-icon" for="search"><i class="material-icons">search</i></label>
-                            <i id="dropdown-icon" onclick="event.stopPropagation()" class="material-icons hidden">arrow_drop_down</i>
+                            <input id="search" type="search" placeholder="Search" required>
+                            <label class="label-icon search-icon" for="search"><i class="material-icons left">search</i></label>
+                            <i class="material-icons search-icon">close</i>
+                        </div>
+
+                        <ul class="right">
+                            <li><a id="user-dropdown-trigger" data-target='user-dropdown' class="dropdown-trigger"><i class="material-icons">account_circle</i></a></li>
+                        </ul>
+
+                        <div id="user-info">
+                            <ul id="user-dropdown" class="right dropdown-content">
+                                <li><a href="/settings">Account</a></li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li><a href="/logout">
+                                    <span id="logout">Logout <i class="material-icons right">exit_to_app</i></span>
+                                </a></li>
+                            </ul>
                         </div>
                     </div>
                 </nav>
+
+                <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large waves-effect waves-circle waves-light red">
+                        <i class="material-icons">add</i>
+                    </a>
+                </div>
 
             <% } %>
         </header>
