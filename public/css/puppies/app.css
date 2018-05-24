@@ -16,12 +16,6 @@
   }
 }
 
-@media only screen and (min-width : 993px) {
-  .grid-sizer, .grid-item {
-    width: 32%;
-  }
-}
-
 .grid-item {
   float: left;
   margin-bottom: 1%;
