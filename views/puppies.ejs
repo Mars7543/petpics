@@ -35,7 +35,8 @@
 
                     <% image.comments.forEach((comment) => { %>
                         <blockquote>
-                            <%= comment.comment %><br>
+                            <%= comment.comment %>
+                            <br>
                             <a href="/users/<%= comment.user_id %>"><%= image.user %><i class="material-icons left">account_circle</i></a><span class="right">Posted <%= comment.ago %></span>
                         </blockquote>
                     <% }); %>

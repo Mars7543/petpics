@@ -17,4 +17,4 @@ app.listen(PORT, () => {
    console.log(`Server running on port ${PORT}...`);
 });
 
-// TODO: Add User Tab to Navbar (On Hover Dropdown) (Account Settings & Logout )
+// TODO: Add Side Bar With Search Filter Options, Groups, Friends, etc. and Post button
