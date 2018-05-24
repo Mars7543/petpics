@@ -5,12 +5,13 @@
 }
 
 /* Grid Styles */
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width : 650px) {
   .grid-sizer, .grid-item {
     width: 100%;
   }
 }
-@media only screen and (min-width : 601px) {
+
+@media only screen and (min-width : 700px) {
   .grid-sizer, .grid-item {
     width: 49%;
   }
@@ -26,6 +27,11 @@
 }
 
 /* Image Styles */
+.grid .grid-item.card .card-reveal {
+    overflow: hidden !important;
+    padding-bottom: 0;
+}
+
 .grid-item.card .card-content .card-title {
     width: 100%;
     font-size: 1.3em;
@@ -33,11 +39,111 @@
     margin-right: 0 !important;
 }
 
+.action-icons{
+    top: 65%;
+    right: 5%;
+    z-index: 2;
+    width: 15%;
+    position: absolute;
+}
+
+.action-icons i {
+    cursor: pointer;
+    font-size: 3em;
+}
+
+i.fa-heart.like{
+    cursor: pointer;
+    color: #e74c3c;
+    transition: color 1s;
+}
+
+.heart-active {
+    color: #c0392b !important;
+}
+
+.action-icons .show-comments{
+    color: #3498db;
+    transition: all 0.5s;
+}
+
+.action-icons .show-comments:hover{
+    color: #2980b9;
+}
+
 p.byUser i{
     font-size: 1.8em;
 }
 
-a.btn.btn-more {
+.card-reveal .image-info {
+    height: 30%;
+}
+
+.card-reveal .comment-wrapper {
+    display: block;
+    height: 50%;
+    overflow-y: scroll;
+}
+
+.card-reveal .comment-wrapper .comments {
+    display: block;
+    margin-top: 2%;
+}
+
+.card-reveal .add-comment {
+    height: 20%;
+}
+
+.card-reveal .add-comment form {
+    height: 100%;
+    vertical-align: middle;
+}
+
+.card-reveal .add-comment form .input-field {
+    height: 100%;
+    vertical-align: middle;
+}
+
+.card-reveal .add-comment .input-field input {
+    margin-bottom: 0 !important;
+
+}
+
+.btn.btn-large.btn-comment {
     border-radius: 5px;
-    background-color: #6ab04c;
+    background-color: #2ecc71;
+}
+
+/* label color */
+.input-field label,
+.input-field label {
+    font-weight: 500 !important;
+    color: #2ecc71 !important;
+}
+
+/* label focus color */
+.input-field input:focus + label,
+.input-field input:focus + label {
+    color: #2ecc71 !important;
+}
+
+/* label underline focus color */
+.input-field input:focus,
+.input-field input:focus {
+    border-bottom: 1px solid #2ecc71 !important;
+    box-shadow: 0 1px 0 0 #27ae60 !important;
+}
+
+/* valid color */
+.input-field input.valid,
+.input-field input.valid {
+    border-bottom: 1px solid #2ecc71 !important;
+    box-shadow: 0 1px 0 0 #27ae60 !important;
+}
+
+/* invalid color */
+.input-field input.invalid,
+.input-field input.invalid {
+    border-bottom: 1px solid #eb4d4b !important;
+    box-shadow: 0 1px 0 0 #c0392b !important;
 }

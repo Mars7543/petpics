@@ -9,6 +9,11 @@
         <% images.forEach((image) => { %>
 
             <div class="grid-item card">
+                <div class="action-icons right">
+                    <i class="fas fa-heart like"></i>
+                    <i class="material-icons show-comments activator right" onclick="setTimeout(function () { $('#comment_<%= image.img_id %>').focus(); }, 250);">comment</i>
+                </div>
+
                 <div class="card-image waves-effect waves-light">
                     <img class="activator" src="<%= image.img %>" alt="Error Loading Img">
                 </div>
@@ -18,7 +23,7 @@
                         <%= image.title %>
                     </span>
 
-                    <p class="byUser"><a href="/users/<%= image.user_id %>">By <%= image.user %><i class="material-icons right">account_circle</i></a></p>
+                    <p class="byUser"><a href="/users/<%= image.user_id %>">By <%= image.user %><i class="material-icons left">account_circle</i></a></p>
                 </div>
 
                 <div class="card-reveal">
@@ -32,24 +37,37 @@
                         </p>
 
                         <p><a href="/users/<%= image.user_id %>">By <%= image.user %></a></p>
+
                         <div class="divider"></div>
-
-                        <% image.comments.forEach((comment) => { %>
-                            <blockquote>
-                                <%= comment.comment %>
-                                <br>
-                                <a href="/users/<%= comment.user_id %>"><%= image.user %><i class="material-icons left">account_circle</i></a><span class="right">Posted <%= comment.ago %></span>
-                            </blockquote>
-                        <% }); %>
-
                     </div>
 
-                    <div class="comments">
-
+                    <div class="comment-wrapper">
+                        <div class="comments">
+                            <% image.comments.forEach((comment) => { %>
+                                <blockquote>
+                                    <%= comment.comment %>
+                                    <br>
+                                    <a href="/users/<%= comment.user_id %>"><%= image.user %><i class="material-icons left">account_circle</i></a><span class="left">Posted <%= comment.ago %></span>
+                                </blockquote>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <div class="add-comment">
+                        <div class="divider"></div>
 
+                        <form action="/<%= image._id %>/comment" method="post">
+                            <div class="row" style="margin-bottom: 0 !important; height: 100%;">
+                                <div style="margin-bottom: 0 !important;" class="input-field col s8">
+                                    <input id="comment_<%= image.img_id %>" data-length="100" class="comment" type="text" name="comment" value="">
+                                    <label for="comment_<%= image.img_id %>">Comment</label>
+                                </div>
+
+                                <div style="margin-bottom: 0 !important;" class="input-field col s4">
+                                    <button class="btn btn-large btn-comment waves-effect waves-light">Comment</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

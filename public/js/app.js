@@ -9,6 +9,26 @@ $(document).ready(function(){
         percentPosition: true,
         gutter: '.gutter-sizer'
     });
+
+    $('input.comment').characterCounter();
+
+    // $('i.fa-heart.like').on('mouseover', function() {
+    //     $(this).removeClass('far');
+    //     $(this).addClass('fas');
+    // }).on('mouseout', function() {
+    //     $(this).removeClass('fas');
+    //     $(this).addClass('far');
+    // }).on('mousedown', function() {
+    //     $(this).toggleClass('heart-active');
+    // }).on('mouseup', function() {
+    //     $(this).toggleClass('heart-active');
+    // });
+
+    $('i.fa-heart.like').on('mousedown', function() {
+        $(this).toggleClass('heart-active');
+    }).on('mouseup', function() {
+        $(this).toggleClass('heart-active');
+    });
 });
 
 // ============== LANDING PAGE SCRIPTS ============== \\
