@@ -2,6 +2,53 @@
 
 <main>
 
+    <div class="grid">
+        <div class="grid-sizer"></div>
+        <div class="gutter-sizer"></div>
+
+        <% images.forEach((image) => { %>
+
+            <div class="grid-item card">
+                <div class="card-image waves-effect waves-light">
+                    <img class="activator" src="<%= image.img %>" alt="Error Loading Img">
+                </div>
+
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">
+                        <%= image.title %>
+                    </span>
+
+                    <p class="byUser"><a href="/users/<%= image.user_id %>">By <%= image.user %><i class="material-icons right">account_circle</i></a></p>
+                </div>
+
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4"><%= image.title %></span>
+                    <p><%= image.description %></p>
+                    <p>
+                        <% image.tags.forEach((tag) => { %>
+                            <div class="chip"><%= tag %></div>
+                        <% }); %>
+                    </p>
+
+                    <p><a href="/users/<%= image.user_id %>">By <%= image.user %></a></p>
+                    <div class="divider"></div>
+
+                    <% image.comments.forEach((comment) => { %>
+                        <blockquote>
+                            <%= comment.comment %><br>
+                            <a href="/users/<%= comment.user_id %>"><%= image.user %><i class="material-icons left">account_circle</i></a><span class="right">Posted <%= comment.ago %></span>
+                        </blockquote>
+                    <% }); %>
+
+                    <div class="center">
+                        <a class="btn btn-more waves-effect waves-light">Read More / Post</a>
+                    </div>
+                </div>
+            </div>
+
+        <% }); %>
+
+    </div>
 </main>
 
 <% include ./partials/footer %>

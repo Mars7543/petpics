@@ -1,0 +1,49 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Grid Styles */
+@media only screen and (max-width : 600px) {
+  .grid-sizer, .grid-item {
+    width: 100%;
+  }
+}
+@media only screen and (min-width : 601px) {
+  .grid-sizer, .grid-item {
+    width: 49%;
+  }
+}
+
+@media only screen and (min-width : 993px) {
+  .grid-sizer, .grid-item {
+    width: 32%;
+  }
+}
+
+.grid-item {
+  float: left;
+  margin-bottom: 1%;
+}
+
+.gutter-sizer {
+  width: 2%;
+}
+
+/* Image Styles */
+.grid-item.card .card-content .card-title {
+    width: 100%;
+    font-size: 1.3em;
+    font-weight: 400;
+    margin-right: 0 !important;
+}
+
+p.byUser i{
+    font-size: 1.8em;
+}
+
+a.btn.btn-more {
+    border-radius: 5px;
+    background-color: #6ab04c;
+}

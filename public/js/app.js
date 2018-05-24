@@ -2,9 +2,13 @@ $(document).ready(function(){
     sliderInit();
     $('.fixed-action-btn').floatingActionButton();
     $('.dropdown-trigger').dropdown({coverTrigger: false, hover: true});
-    // $('#dropdown-icon').click(() => {
-    //     $('#search').focus();
-    // });
+
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true,
+        gutter: '.gutter-sizer'
+    });
 });
 
 // ============== LANDING PAGE SCRIPTS ============== \\
