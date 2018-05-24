@@ -33,19 +33,19 @@
                     <div class="nav-wrapper">
                         <a href="/puppies" id="brand-logo">PetPics</a>
 
-                        <div id="search-field" class="input-field">
+                        <div id="search-field" class="input-field hide-on-small-and-down">
                             <input id="search" type="search" placeholder="Search" required>
                             <label class="label-icon search-icon" for="search"><i class="material-icons left">search</i></label>
                             <i class="material-icons search-icon">close</i>
                         </div>
 
                         <ul class="right">
-                            <li><a id="user-dropdown-trigger" data-target='user-dropdown' class="dropdown-trigger"><i class="material-icons">account_circle</i></a></li>
+                            <li><a id="user-dropdown-trigger" data-target='user-dropdown' class="dropdown-trigger"><div class="username hide-on-small-and-down">Username</div><i class="material-icons">account_circle</i></a></li>
                         </ul>
 
                         <div id="user-info">
                             <ul id="user-dropdown" class="right dropdown-content">
-                                <li><a href="/settings">Account</a></li>
+                                <li><a href="/settings">Account Info</a></li>
                                 <li class="divider" tabindex="-1"></li>
                                 <li><a href="/logout">
                                     <span id="logout">Logout <i class="material-icons right">exit_to_app</i></span>
