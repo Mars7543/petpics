@@ -22,27 +22,34 @@
                 </div>
 
                 <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4"><%= image.title %></span>
-                    <p><%= image.description %></p>
-                    <p>
-                        <% image.tags.forEach((tag) => { %>
-                            <div class="chip"><%= tag %></div>
+                    <div class="image-info">
+                        <span class="card-title grey-text text-darken-4"><%= image.title %></span>
+                        <p><%= image.description %></p>
+                        <p>
+                            <% image.tags.forEach((tag) => { %>
+                                <div class="chip"><%= tag %></div>
+                            <% }); %>
+                        </p>
+
+                        <p><a href="/users/<%= image.user_id %>">By <%= image.user %></a></p>
+                        <div class="divider"></div>
+
+                        <% image.comments.forEach((comment) => { %>
+                            <blockquote>
+                                <%= comment.comment %>
+                                <br>
+                                <a href="/users/<%= comment.user_id %>"><%= image.user %><i class="material-icons left">account_circle</i></a><span class="right">Posted <%= comment.ago %></span>
+                            </blockquote>
                         <% }); %>
-                    </p>
 
-                    <p><a href="/users/<%= image.user_id %>">By <%= image.user %></a></p>
-                    <div class="divider"></div>
+                    </div>
 
-                    <% image.comments.forEach((comment) => { %>
-                        <blockquote>
-                            <%= comment.comment %>
-                            <br>
-                            <a href="/users/<%= comment.user_id %>"><%= image.user %><i class="material-icons left">account_circle</i></a><span class="right">Posted <%= comment.ago %></span>
-                        </blockquote>
-                    <% }); %>
+                    <div class="comments">
 
-                    <div class="center">
-                        <a class="btn btn-more waves-effect waves-light">Read More / Post</a>
+                    </div>
+
+                    <div class="add-comment">
+
                     </div>
                 </div>
             </div>
