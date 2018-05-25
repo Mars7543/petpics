@@ -9,13 +9,13 @@
         <% images.forEach((image) => { %>
 
             <div class="grid-item card">
-                <div class="action-icons right">
-                    <i class="fas fa-heart like"></i>
-                    <i class="material-icons show-comments activator right" onclick="setTimeout(function () { $('#comment_<%= image.img_id %>').focus(); }, 250);">comment</i>
-                </div>
+                <div class="card-image">
+                    <div class="action-icons right">
+                        <i class="far fa-heart like"></i>
+                        <i class="material-icons show-comments activator right" onclick="setTimeout(function () { $('#comment_<%= image.img_id %>').focus(); }, 250);">comment</i>
+                    </div>
 
-                <div class="card-image waves-effect waves-light">
-                    <img class="activator" src="<%= image.img %>" alt="Error Loading Img">
+                    <img src="<%= image.img %>" alt="Error Loading Img">
                 </div>
 
                 <div class="card-content">
@@ -28,7 +28,7 @@
 
                 <div class="card-reveal">
                     <div class="image-info">
-                        <span class="card-title grey-text text-darken-4"><%= image.title %></span>
+                        <span class="card-title grey-text text-darken-4"><%= image.title %><span class="right"><i class="material-icons close-view">close</i></span></span>
                         <p><%= image.description %></p>
                         <p>
                             <% image.tags.forEach((tag) => { %>
@@ -47,7 +47,7 @@
                                 <blockquote>
                                     <%= comment.comment %>
                                     <br>
-                                    <a href="/users/<%= comment.user_id %>"><%= image.user %><i class="material-icons left">account_circle</i></a><span class="left">Posted <%= comment.ago %></span>
+                                    <a href="/users/<%= comment.user_id %>"><%= image.user %><i class="material-icons left">account_circle</i></a><span class="right">Posted <%= comment.ago %></span>
                                 </blockquote>
                             <% }); %>
                         </div>
@@ -56,7 +56,7 @@
                     <div class="add-comment">
                         <div class="divider"></div>
 
-                        <form action="/<%= image._id %>/comment" method="post">
+                        <form action="/petpics/<%= image._id %>/comment" method="post">
                             <div class="row" style="margin-bottom: 0 !important; height: 100%;">
                                 <div style="margin-bottom: 0 !important;" class="input-field col s8">
                                     <input id="comment_<%= image.img_id %>" data-length="100" class="comment" type="text" name="comment" value="">

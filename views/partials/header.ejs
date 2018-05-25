@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>PetPics</title>
-        
+
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500" rel="stylesheet">
@@ -56,6 +56,12 @@
                         </div>
                     </div>
                 </nav>
+
+                <div class="fixed-action-btn">
+                    <a href="/petpics/new" class="btn-floating btn-large red pulse waves-effect waves-light" onmouseover="$(this).removeClass('pulse')" onmouseout="$(this).addClass('pulse')">
+                        <i class="large material-icons">add</i>
+                    </a>
+                </div>
 
             <% } %>
         </header>

@@ -1,0 +1,37 @@
+@media only screen and (max-width : 800px) {
+    .grid-sizer, .grid-item, .grid-item-fullwidth, .grid-sizer-fullwidth {
+        width: 100% !important;
+    }
+
+    .card-reveal {
+        padding-top: 2%;
+    }
+
+    .card-reveal .comment-wrapper {
+        max-height: 55% !important;
+    }
+}
+
+@media only screen and (max-width : 1000px) {
+    .grid-sizer, .grid-item{
+        width: 49%;
+    }
+
+    .grid-item-fullwidth, .grid-sizer-fullwidth {
+        width: 100%;
+    }
+
+    .card-reveal .comment-wrapper {
+        height: 65%;
+    }
+
+    form .row {
+        margin-top: 2.25%;
+    }
+}
+
+@media only screen and (min-width : 1001px) {
+    .grid-sizer, .grid-item, .grid-item-fullwidth, .grid-sizer-fullwidth {
+        width: 49%;
+    }
+}

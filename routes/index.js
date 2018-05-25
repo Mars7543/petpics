@@ -214,16 +214,16 @@ router.get('/', (req, res) => {
    });
 });
 
-router.get('/puppies', (req, res) => {
-    res.render('puppies', {
-        css:     '/static/css/puppies/app.css',
-        queries: '/static/css/puppies/queries.css',
+router.get('/petpics', (req, res) => {
+    res.render('home', {
+        css:     '/static/css/home/app.css',
+        queries: '/static/css/home/queries.css',
         images
     });
 });
 
 router.post('/login', (req, res) => {
-    res.redirect('/puppies');
+    res.redirect('/petpics');
 });
 
 router.post('/signup', (req, res) => {

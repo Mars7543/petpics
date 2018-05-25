@@ -7,8 +7,10 @@ app.use('/static', express.static(__dirname + '/public'));
 
 // route config
 const indexRoutes = require('./routes');
+const pictureRoutes = require('./routes/pictures');
 
 app.use(indexRoutes);
+app.use(pictureRoutes);
 
 // server config
 const PORT = process.env.PORT || 8000;
