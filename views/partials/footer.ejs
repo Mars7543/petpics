@@ -8,5 +8,25 @@
                 PuppyPics All rights reserved.
             </div>
         </footer> -->
+
+        <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="/static/js/materialize.min.js"></script>
+        <script type="text/javascript" src="/static/js/masonry.min.js"></script>
+        <script type="text/javascript" src="/static/js/app.js"></script>
+        <script src="https://unpkg.com/file-upload-with-preview"></script>
+
+        <% if (success && success.length !== 0) { %>
+
+            <script type="text/javascript">
+                M.toast({html: '<%= success %>', displayLength: 2250, classes: 'successToast'});
+            </script>
+
+        <% } else if (error && error.length !== 0) { %>
+
+            <script type="text/javascript">
+                M.toast({html: '<%= error %>', displayLength: 2750, classes: 'errorToast'});
+            </script>
+
+        <% } %>
     </body>
 </html>

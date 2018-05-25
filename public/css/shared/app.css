@@ -38,6 +38,10 @@ nav {
     transition: all .5s;
 }
 
+#search-field.hide{
+    display: none !important;
+}
+
 #search:focus{
     background-color: white;
 }
@@ -91,7 +95,7 @@ nav .input-field label i.icon-active {
 }
 
 li.divider {
-    height: .75px !important;
+    height: .5px !important;
 }
 
 #user-dropdown li a span {
@@ -106,6 +110,18 @@ li.divider {
 #user-dropdown-trigger i{
     font-size: 2.75em;
     height: 100%;
+}
+
+.successToast {
+    background-color: #2ecc71;
+    color: white;
+    z-index: 2;
+}
+.errorToast {
+    background-color: #ee6e73;
+    font-weight: bold;
+    color: white;
+    z-index: 2;
 }
 
 /* Footer */
