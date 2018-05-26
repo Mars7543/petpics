@@ -1,10 +1,17 @@
 const mongoose = require('mongoose');
 
 module.exports = mongoose.model('Post', new mongoose.Schema({
-    description:        String,
-    image:              String,
-    likes: Number,
-    
+    description: String,
+
+    image: String,
+
+    tags: [String],
+
+    likes: {
+        type: Number,
+        default: 0
+    },
+
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

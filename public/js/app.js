@@ -18,7 +18,7 @@ $(document).ready(function(){
     $('input.comment').characterCounter();
     $('input#title').characterCounter();
 
-    var placeholder = 'Add Tags (' + (window.mobileAndTabletcheck() ? 'Separate w/ Spaces' : 'Return After Each Tag') + ')';
+    var placeholder = 'Add Tags (Press Enter After Each Tag)';
 
     // if (window.mobileAndTabletcheck())
     //     $('.chips-placeholder input').css('min-width', '100% !important');
@@ -166,6 +166,7 @@ window.mobileAndTabletcheck = function() {
 
 function modifyChipsWidth() {
     $('.chips-placeholder input').removeClass('fullChipsWidth');
+    updateChipsDataInput();
 }
 
 function checkChipsWidth() {
@@ -173,4 +174,20 @@ function checkChipsWidth() {
 
     if (chips.length === 0)
         $('.chips-placeholder input').addClass('fullChipsWidth');
+
+    updateChipsDataInput();
+}
+
+function updateChipsDataInput() {
+    var chips = $('.chips-placeholder');
+    var chipsData = M.Chips.getInstance(chips).chipsData;
+
+    var input = $('#tags');
+    var inputData = '';
+
+    chipsData.forEach((data, index) => {
+        inputData += (index == chipsData.length - 1 ? data.tag : data.tag + ',');
+    });
+
+    input.val(inputData);
 }

@@ -10,7 +10,12 @@ var userSchema = new mongoose.Schema({
     },
 
     firstName            : String,
-    lastName             : String
+    lastName             : String,
+
+    postName      : {
+        type: Number,
+        default: 0
+    }
 });
 
 // generates a hash

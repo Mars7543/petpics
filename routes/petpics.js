@@ -1,12 +1,18 @@
 const   formidable  = require('formidable'),
-        middleWare  = require('../middleware'),
+        middleware  = require('../middleware'),
+        mongoose    = require('mongoose'),
         express     = require('express'),
+        multer      = require('multer'),
         router      = express.Router(),
+        upload      = multer({ storage: multer.memoryStorage() }),
         path        = require('path'),
         fs          = require('fs');
 
+const User = require('../models/user');
+const Post = require('../models/post');
+
 // MAIN VIEW
-router.get('/petpics', middleWare.isLoggedIn, (req, res) => {
+router.get('/petpics', middleware.isLoggedIn, (req, res) => {
     res.render('petpics/home', {
         css:     '/static/css/petpics/home.css',
         queries: '/static/css/petpics/home-queries.css',
@@ -15,7 +21,7 @@ router.get('/petpics', middleWare.isLoggedIn, (req, res) => {
 });
 
 // NEW
-router.get('/petpics/new', middleWare.isLoggedIn, (req, res) => {
+router.get('/petpics/new', middleware.isLoggedIn, (req, res) => {
     res.render('petpics/new', {
         css:     '/static/css/petpics/new.css',
         queries: '/static/css/petpics/new-queries.css',
@@ -24,42 +30,74 @@ router.get('/petpics/new', middleWare.isLoggedIn, (req, res) => {
 });
 
 // CREATE
-router.post('/petpics', middleWare.isLoggedIn, (req, res) => {
-    var form = new formidable.IncomingForm();
-    form.uploadDir = path.join(__dirname, '../public/img/uploads');
+router.post('/petpics', middleware.isLoggedIn, (req, res) => {
+    var post = {};
 
-    form.on('file', function(field, file) {
-        fs.rename(file.path, path.join(form.uploadDir, file.name));
+    var form = new formidable.IncomingForm();
+
+    middleware.mkdirpath('public/img/uploads/' + req.user.local.username);
+    form.uploadDir = path.join(__dirname, '../public/img/uploads/' + req.user.local.username);
+
+    // parse the form
+    form.parse(req, (err, fields, file) => {
+        var filename = req.user.postName + "." + file.image.name.split('.').pop();
+
+        post.tags   =   fields.tags.split(',');
+        post.user_id    =   fields.user_id;
+        post.desciption =   fields.description;
+        post.image = `/static/img/uploads/${req.user.local.username}/${filename}`;
+
+        User.findById(req.user._id, (err, user) => {
+            if (err) {
+                req.flash('error', 'Something went wrong with our servers :( Please try again later');
+                return res.redirect('/petpics');
+            }
+
+            fs.rename(file.image.path, path.join(form.uploadDir, filename));
+
+            user.postName++;
+            user.save((err) => {
+                if (err) {
+                    req.flash('error', 'Something went wrong with our servers :( Please try again later');
+                    return res.redirect('/petpics');
+                }
+            });
+        });
     });
 
     // log any errors that occur
     form.on('error', function(err) {
-        console.log('An error has occured: \n' + err);
+        req.flash('error', 'An Error Occurred While Uploading');
+        return res.redirect('/petpics');
     });
 
-    // once all the files have been uploaded, send a response to the client
+    // once the file has been uploaded, send a response to the client
     form.on('end', function() {
-        res.redirect('/petpics');
-    });
+        Post.create(post, (err, post) => {
+            if (err)
+                req.flash('error', 'Something went wrong w/ our servers :( Please try again later');
+            else
+                req.flash('success', 'Successfully Uploaded!');
 
-    // parse the incoming request containing the form data
-    form.parse(req);
+            return res.redirect('/petpics');
+        });
+    });
 });
 
 
 // EDIT
-router.get('/petpics/:id/edit', middleWare.isLoggedIn, (req, res) => {
+router.get('/petpics/:id/edit', middleware.isLoggedIn, (req, res) => {
 
 });
 
 // UPDATE
-router.put('/petpics/:id', middleWare.isLoggedIn, (req, res) => {
+router.put('/petpics/:id', middleware.isLoggedIn, (req, res) => {
 
 });
 
 
 // DELETE
-router.delete('/petpics/:id', middleWare.isLoggedIn, (req, res) => {
+router.delete('/petpics/:id', middleware.isLoggedIn, (req, res) => {
 
 });
 

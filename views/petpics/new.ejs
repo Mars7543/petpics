@@ -6,6 +6,8 @@
         <h2 class="center">Upload Image</h2>
 
         <form id="upload" action="/petpics" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="user_id" value="<%= user._id %>">
+
             <div class="row">
                 <div id="image-upload-row" class="col s12 m6 offset-m3">
 
@@ -13,7 +15,7 @@
                         <label>Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"><i style="height: 100%;" class="material-icons">close</i></a></label>
 
                         <label class="custom-file-container__custom-file" >
-                            <input type="file" class="custom-file-container__custom-file__custom-file-input" name="image" accept="image/*" multiple>
+                            <input type="file" class="custom-file-container__custom-file__custom-file-input" name="image" accept="image/*" required>
                             <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
                             <span class="custom-file-container__custom-file__custom-file-control"></span>
                         </label>
@@ -26,16 +28,17 @@
 
             <div class="row" id="description-row">
                 <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-                    <input id="desciption" type="text" data-length="75" name="description">
+                    <input id="desciption" type="text" data-length="75" name="description" required>
                     <label for="desciption">Desciption</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
-                    <input type="hidden" name="tags">
+                    <input id="tags" type="hidden" name="tags">
+
                     <div class="chips chips-placeholder">
-                        <input type="text" class="tags fullChipsWidth">
+                        <input type="text" name="mobile_tags" class="tags fullChipsWidth">
                     </div>
                 </div>
             </div>
