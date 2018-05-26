@@ -53,3 +53,6 @@ app.listen(PORT, () => {
 });
 
 // TODO: Add Side Bar With Search Filter Options, Groups, Friends, etc. and Post button
+// TODO: Allow User Created Posts to Appear on View Page
+// TODO: Make Search Bar Filter Posts by Desc, Tags, & user
+// TODO: Allow Users to Edit / Delete & Like / Comment on Posts
