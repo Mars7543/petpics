@@ -1,5 +1,5 @@
 {
-  "name": "puppypics",
+  "name": "petpics",
   "version": "1.0.0",
   "description": "Fast & Easy Way to Share Pictures of Cute Dogs",
   "main": "server.js",
