@@ -1,4 +1,4 @@
 .jshintrc
 node_modules
-config
+config/database.js
 .DS_STORE

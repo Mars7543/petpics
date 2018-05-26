@@ -7,7 +7,7 @@
         app             = express();
 
 // db config
-mongoose.connect(require('./config/database').local);
+mongoose.connect(require('./config/database').host);
 
 // app config
 app.set('view engine', 'ejs');
