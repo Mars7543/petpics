@@ -6,9 +6,8 @@
         flash           = require('connect-flash'),
         app             = express();
 
-// db config
-// mongoose.connect(require('./config/database').host);
-mongoose.connect(process.env.DB);
+// db config;
+mongoose.connect(process.env.DB || require('./config/database').local);
 
 // app config
 app.set('view engine', 'ejs');
@@ -53,7 +52,6 @@ app.listen(PORT, () => {
    console.log(`Server running on port ${PORT}...`);
 });
 
-// TODO: Add Side Bar With Search Filter Options, Groups, Friends, etc. and Post button
-// TODO: Allow User Created Posts to Appear on View Page
 // TODO: Make Search Bar Filter Posts by Desc, Tags, & user
-// TODO: Allow Users to Edit / Delete & Like / Comment on Posts
+// TODO: Allow Users to Like / Comment on Posts
+// TODO: Add Side Bar With Search Filter Options, Groups, Friends, etc. and Post button

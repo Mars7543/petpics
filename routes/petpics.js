@@ -10,13 +10,23 @@ const   formidable  = require('formidable'),
 
 const User = require('../models/user');
 const Post = require('../models/post');
+const Comment = require('../models/comment');
 
 // MAIN VIEW
 router.get('/petpics', middleware.isLoggedIn, (req, res) => {
-    res.render('petpics/home', {
-        css:     '/static/css/petpics/home.css',
-        queries: '/static/css/petpics/home-queries.css',
-        images: require('./static_img_data')
+    Post.find({}).populate('user').populate('comments').exec((err, posts) => {
+        if (err) {
+            console.log(err);
+            req.flash('error', 'Something went wrong w/ our servers :( Please try again later');
+            return res.redirect('/');
+        }
+
+        res.render('petpics/home', {
+            css:     '/static/css/petpics/home.css',
+            queries: '/static/css/petpics/home-queries.css',
+            posts
+            // images: require('./static_post_data')
+        });
     });
 });
 
@@ -43,8 +53,8 @@ router.post('/petpics', middleware.isLoggedIn, (req, res) => {
         var filename = req.user.postName + "." + file.image.name.split('.').pop();
 
         post.tags   =   fields.tags.split(',');
-        post.user_id    =   fields.user_id;
-        post.desciption =   fields.description;
+        post.user    =   fields.user_id;
+        post.description =   fields.description;
         post.image = `/static/img/uploads/${req.user.local.username}/${filename}`;
 
         User.findById(req.user._id, (err, user) => {

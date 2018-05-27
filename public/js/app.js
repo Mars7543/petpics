@@ -17,6 +17,7 @@ $(document).ready(function(){
 
     $('input.comment').characterCounter();
     $('input#title').characterCounter();
+    $('input#description').characterCounter();
 
     var placeholder = 'Add Tags (Press Enter After Each Tag)';
 
@@ -190,4 +191,9 @@ function updateChipsDataInput() {
     });
 
     input.val(inputData);
+}
+
+function writeAgo(selector, date) {
+    var ago = moment(date).fromNow();
+    $(`${selector}`).append(`Posted ${ago}`);
 }

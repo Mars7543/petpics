@@ -12,7 +12,7 @@ module.exports = mongoose.model('Post', new mongoose.Schema({
         default: 0
     },
 
-    user_id: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
