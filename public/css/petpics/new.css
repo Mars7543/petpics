@@ -13,8 +13,7 @@ form .image-preview {
 }
 
 .btn.btn-large.btn-upload {
-    margin-top: 1.5%;
-    width: 12.5%;
+    margin-top: 3.25%;
     border-radius: 5%;
     background-image: linear-gradient(to right, #4cd137, #57c93d, #5fc042, #65b847, #6ab04c);
 }
