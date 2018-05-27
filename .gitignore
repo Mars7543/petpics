@@ -2,4 +2,3 @@
 node_modules
 config/database.js
 .DS_STORE
-public/img/uploads

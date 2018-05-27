@@ -49,7 +49,9 @@ app.use(pictureRoutes);
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
-   console.log(`Server running on port ${PORT}...`);
+    console.log(process.env.AWS_ACCESS_KEY_ID);
+    console.log(process.env.AWS_SECRET_ACCESS_KEY);
+    console.log(`Server running on port ${PORT}...`);
 });
 
 // TODO: Make Search Bar Filter Posts by Desc, Tags, & user

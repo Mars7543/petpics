@@ -6,11 +6,18 @@ const   formidable  = require('formidable'),
         router      = express.Router(),
         upload      = multer({ storage: multer.memoryStorage() }),
         path        = require('path'),
+        AWS         = require('aws-sdk'),
         fs          = require('fs');
 
 const User = require('../models/user');
 const Post = require('../models/post');
 const Comment = require('../models/comment');
+
+const s3Bucket = new AWS.S3({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    Bucket: 'petpics-posts'
+});
 
 // MAIN VIEW
 router.get('/petpics', middleware.isLoggedIn, (req, res) => {
@@ -45,55 +52,76 @@ router.post('/petpics', middleware.isLoggedIn, (req, res) => {
 
     var form = new formidable.IncomingForm();
 
-    middleware.mkdirpath('public/img/uploads/' + req.user.local.username);
-    form.uploadDir = path.join(__dirname, '../public/img/uploads/' + req.user.local.username);
+    // middleware.mkdirpath('public/img/uploads/' + req.user.local.username);
+    // form.uploadDir = path.join(__dirname, '../public/img/uploads/' + req.user.local.username);
 
     // parse the form
-    form.parse(req, (err, fields, file) => {
-        var filename = req.user.postName + "." + file.image.name.split('.').pop();
-
-        post.tags   =   fields.tags.split(',');
-        post.user    =   fields.user_id;
-        post.description =   fields.description;
-        post.image = `/static/img/uploads/${req.user.local.username}/${filename}`;
-
+    form.parse(req, (err, fields, files) => {
         User.findById(req.user._id, (err, user) => {
             if (err) {
+                console.log('Error Occured While Finding User: ' + err);
                 req.flash('error', 'Something went wrong with our servers :( Please try again later');
                 return res.redirect('/petpics');
             }
 
-            fs.rename(file.image.path, path.join(form.uploadDir, filename));
+            var file = files.image;
+            var filename = `${req.user.local.username}/${req.user.postName}.${file.name.split('.').pop()}`;
+
+            post.tags   =   fields.tags.split(',');
+            post.user    =   req.user._id;
+            post.description =   fields.description;
+            post.image = `https://s3.us-east-2.amazonaws.com/petpics-posts/${filename}`;
+
+            fs.readFile(file.path, (err, data) => {
+                if (err) {
+                    console.log('Error Occured While Reading File: ' + err);
+                    req.flash('error', 'An Error Occurred While Reading the File');
+                    return res.redirect('/petpics');
+                }
+
+                var params = {
+                    Key: filename,
+                    Body: data,
+                    Bucket: 'petpics-posts'
+                };
+
+                s3Bucket.upload(params, (err, data) => {
+                    fs.unlink(file.path, (err) => {
+                        if (err) {
+                            console.log('Error Occured While Unlinking File: ' + err);
+                            req.flash('error', 'An Error Occurred While Reading the File');
+                            return res.redirect('/petpics');
+                        }
+                    });
+
+                    if (err) {
+                        console.log('Error Occured While Uploading File: ' + err);
+                        req.flash('error', 'An Error Occurred While Uploading');
+                        res.redirect('/petpics');
+                    }
+                });
+            });
 
             user.postName++;
             user.save((err) => {
                 if (err) {
+                    console.log('Error Occured While Saving User: ' + err);
                     req.flash('error', 'Something went wrong with our servers :( Please try again later');
                     return res.redirect('/petpics');
                 }
             });
-        });
-    });
 
-    // log any errors that occur
-    form.on('error', function(err) {
-        req.flash('error', 'An Error Occurred While Uploading');
-        return res.redirect('/petpics');
-    });
+            Post.create(post, (err, post) => {
+                if (err)
+                    req.flash('error', 'Something went wrong w/ our servers :( Please try again later');
+                else
+                    req.flash('success', 'Successfully Uploaded!');
 
-    // once the file has been uploaded, send a response to the client
-    form.on('end', function() {
-        Post.create(post, (err, post) => {
-            if (err)
-                req.flash('error', 'Something went wrong w/ our servers :( Please try again later');
-            else
-                req.flash('success', 'Successfully Uploaded!');
-
-            return res.redirect('/petpics');
+                setTimeout(() => { return res.redirect('/petpics'); }, 1000);
+            });
         });
     });
 });
-
 
 // EDIT
 router.get('/petpics/:id/edit', middleware.isLoggedIn, (req, res) => {

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Mars7543/puppypics#readme",
   "dependencies": {
+    "aws-sdk": "^2.247.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
