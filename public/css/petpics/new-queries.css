@@ -1,0 +1,30 @@
+@media only screen and (min-width: 800px)  {
+    .btn.btn-large.btn-upload {
+        width: 15%;
+    }
+
+}
+
+@media only screen and (max-width: 799px)  {
+    .btn.btn-large.btn-upload {
+        width: 20%;
+    }
+
+    .image-upload-row {
+        width: 75% !important;
+    }
+}
+
+
+@media only screen and (max-width: 650px)  {
+    .btn.btn-large.btn-upload {
+        width: 25%;
+    }
+}
+
+
+@media only screen and (max-width: 450px)  {
+    .btn.btn-large.btn-upload {
+        width: 30%;
+    }
+}

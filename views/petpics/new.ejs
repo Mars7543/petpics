@@ -1,13 +1,13 @@
 <% include ../partials/header %>
 
-<main>
+<main class="valign-wrapper">
 
     <div class="container">
         <h2 class="center">Upload Image</h2>
 
         <form id="upload" action="/petpics" method="post" enctype="multipart/form-data">
             <div class="row">
-                <div id="image-upload-row" class="col s12 m6 offset-m3">
+                <div id="image-upload-row" class="col s12 m8 offset-m2 l6 offset-l3">
 
                     <div class="custom-file-container" data-upload-id="uploadImage">
                         <label>Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"><i style="height: 100%;" class="material-icons">close</i></a></label>
@@ -42,9 +42,7 @@
             </div>
 
             <div class="row center">
-                <div class="col s6 offset-s3">
-                    <button class="btn btn-large btn-upload waves-effect waves-light z-depth-3">Post</button>
-                </div>
+                <button class="btn btn-large btn-upload waves-effect waves-light z-depth-3">Post</button>
             </div>
         </form>
     </div>

@@ -12,9 +12,16 @@ form .image-preview {
     margin-bottom: 5% !important;
 }
 
+.custom-file-container__image-preview {
+    margin-bottom: 1% !important;
+}
+
 .btn.btn-large.btn-upload {
     margin-top: 3.25%;
+    margin-bottom: 3.25%;
     border-radius: 5%;
+    font-size: 1.15em;
+    width: 70%;
     background-image: linear-gradient(to right, #4cd137, #57c93d, #5fc042, #65b847, #6ab04c);
 }
 
