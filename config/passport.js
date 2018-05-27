@@ -3,9 +3,6 @@ var LocalStrategy = require("passport-local").Strategy;
 // load up model
 var User        = require("../models/user");
 
-// load middleware
-const middleware = require('../middleware');
-
 module.exports = function(passport){
     // ======================
     // passport session setup
@@ -50,8 +47,6 @@ module.exports = function(passport){
                                 return done(null, false);
                             }
                         });
-
-                        middleware.mkdirpath('public/img/uploads/' + req.body.username);
 
                         var newUser = new User();
 
