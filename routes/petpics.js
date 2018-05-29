@@ -28,8 +28,6 @@ router.get('/petpics', middleware.isLoggedIn, (req, res) => {
             return res.redirect('/');
         }
 
-        console.log(posts[0].comments);
-
         res.render('petpics/home', {
             css:     '/static/css/petpics/home.css',
             js:      '/static/js/petpics/home.js',
