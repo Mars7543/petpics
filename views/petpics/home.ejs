@@ -13,7 +13,7 @@
                     <div class="action-icons right">
                         <span id="like-text_<%= post._id %>" class="left num_likes"></span>&nbsp
 
-                        <i id="like-icon_<%= post._id %>" class="<% if (post.liked_by.indexOf(user._id) !== -1) { %> fas <% } else { %> far <% } %> fa-heart like" onmouseover="$(this).toggleClass('heart-active');" onmouseout="$(this).toggleClass('heart-active');" onmousedown="$(this).toggleClass('heart-active');" <% if (!user._id.equals(post.user._id)) { %> onmouseup="toggle_like('<%= post._id %>')" <% } %>></i>
+                        <i id="like-icon_<%= post._id %>" class="<% if (post.liked_by.indexOf(user._id) !== -1) { %> fas <% } else { %> far <% } %> fa-heart like" <% if (!user._id.equals(post.user._id)) { %> onmouseover="$(this).toggleClass('heart-active');" onmouseout="$(this).toggleClass('heart-active');" onmousedown="$(this).toggleClass('heart-active');" onmouseup="toggle_like('<%= post._id %>')" <% } %>></i>
                         <i class="material-icons show-comments activator right" onclick="setTimeout(function () { $('#comment_<%= post._id %>').focus(); }, 250);">comment</i>
 
                     </div>
