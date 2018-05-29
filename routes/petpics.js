@@ -21,15 +21,14 @@ const s3Bucket = new AWS.S3({
 
 // MAIN VIEW
 router.get('/petpics', middleware.isLoggedIn, (req, res) => {
-    console.log(process.env.AWS_ACCESS_KEY_ID);
-    console.log(process.env.AWS_SECRET_ACCESS_KEY);
-
-    Post.find({}).populate('user').populate('comments').exec((err, posts) => {
+    Post.find({}).populate('user').populate({path: 'comments', populate: {path: 'user'}}).exec((err, posts) => {
         if (err) {
             console.log(err);
             req.flash('error', 'Something went wrong w/ our servers :( Please try again later');
             return res.redirect('/');
         }
+
+        console.log(posts[0].comments);
 
         res.render('petpics/home', {
             css:     '/static/css/petpics/home.css',
@@ -130,7 +129,42 @@ router.post('/petpics', middleware.isLoggedIn, (req, res) => {
     });
 });
 
-// LIKE
+// COMMENT
+router.post('/petpics/:id/comment', middleware.isLoggedIn, (req, res) => {
+    Post.findById(req.params.id, (err, post) => {
+        if (err) {
+            console.log(err);
+            req.flash('error', 'Something went wrong with our servers :( Please try again later');
+            res.redirect('/petpics');
+        } else {
+            Comment.create({user: req.user._id, comment: req.body.comment}, (err, comment) => {
+                if (err) {
+                    console.log(err);
+                    req.flash('error', 'Something went wrong with our servers :( Please try again later');
+                    res.redirect('/petpics');
+                } else {
+                    post.comments.push(comment._id);
+
+                    post.save((err) => {
+                        if (err) {
+                            console.log(err);
+                            req.flash('error', 'Something went wrong with our servers :( Please try again later');
+                        }
+
+                        res.redirect('/petpics');
+                    });
+                }
+            });
+        }
+    });
+});
+
+// EDIT
+router.get('/petpics/:id/edit', middleware.isLoggedIn, (req, res) => {
+
+});
+
+// LIKE & UNLIKE
 router.post('/petpics/:id/:action', middleware.isLoggedIn, (req, res) => {
     Post.findById(req.params.id, (err, post) => {
         if (err) console.log(err);
@@ -148,7 +182,6 @@ router.post('/petpics/:id/:action', middleware.isLoggedIn, (req, res) => {
 
                             else {
                                 post.liked_by.push(req.user._id);
-                                post.likes++;
 
                                 post.save((err) => {
                                     if (err) console.log(err);
@@ -164,7 +197,6 @@ router.post('/petpics/:id/:action', middleware.isLoggedIn, (req, res) => {
 
                             else {
                                 post.liked_by.splice(post.liked_by.indexOf(req.user._id), 1);
-                                post.likes--;
 
                                 post.save((err) => {
                                     if (err) console.log(err);
@@ -178,21 +210,10 @@ router.post('/petpics/:id/:action', middleware.isLoggedIn, (req, res) => {
     });
 });
 
-// COMMENT
-router.post('/petpics/:id/comment', middleware.isLoggedIn, (req, res) => {
-
-});
-
-// EDIT
-router.get('/petpics/:id/edit', middleware.isLoggedIn, (req, res) => {
-
-});
-
 // UPDATE
 router.put('/petpics/:id', middleware.isLoggedIn, (req, res) => {
 
 });
-
 
 // DELETE
 router.delete('/petpics/:id', middleware.isLoggedIn, (req, res) => {

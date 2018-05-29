@@ -6,12 +6,7 @@ module.exports = mongoose.model('Post', new mongoose.Schema({
     image: String,
 
     tags: [String],
-
-    likes: {
-        type: Number,
-        default: 0
-    },
-
+    
     liked_by: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

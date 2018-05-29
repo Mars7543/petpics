@@ -77,8 +77,8 @@
             </div>
 
             <script>
-                <% if (post.likes !== 0) { %>
-                    writeLikes('#like-text_<%= post._id %>', <%= post.likes %>);
+                <% if (post.liked_by.length !== 0) { %>
+                    writeLikes('#like-text_<%= post._id %>', <%= post.liked_by.length %>);
                 <% } %>
 
                 writeAgo('.ago_<%= post._id %>', '<%= post.posted %>');

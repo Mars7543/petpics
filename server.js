@@ -54,7 +54,6 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}...`);
 });
 
-// TODO: Separate JS Files Like W/ CSS Files
 // TODO: Allow Users to Comment on Posts
 // TODO: Make Search Bar Filter Posts by Desc, Tags, & user
 // TODO: Add Side Bar With Search Filter Options, Groups, Friends, etc. and Post button
