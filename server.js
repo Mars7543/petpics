@@ -7,7 +7,7 @@
         app             = express();
 
 // db config;
-mongoose.connect(process.env.DB || require('./config/database').local);
+mongoose.connect(process.env.DB || require('./config/database').host);
 
 // app config
 app.set('view engine', 'ejs');
@@ -54,6 +54,7 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}...`);
 });
 
+// TODO: Separate JS Files Like W/ CSS Files
+// TODO: Allow Users to Comment on Posts
 // TODO: Make Search Bar Filter Posts by Desc, Tags, & user
-// TODO: Allow Users to Like / Comment on Posts
 // TODO: Add Side Bar With Search Filter Options, Groups, Friends, etc. and Post button

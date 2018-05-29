@@ -1,36 +1,14 @@
 var upload;
 
 $(document).ready(function(){
-    sliderInit();
-
     $('.fixed-action-btn').floatingActionButton();
     $('.dropdown-trigger').dropdown({coverTrigger: false, hover: true});
 
-    $('.grid').masonry({
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-sizer',
-        percentPosition: true,
-        gutter: '.gutter-sizer'
-    });
+    sliderInit();
+    gridInit();
+    characterCounterInit();
 
-    modifyGrid();
-
-    $('input.comment').characterCounter();
-    $('input#title').characterCounter();
-    $('input#description').characterCounter();
-
-    var placeholder = 'Add Tags (Press Enter After Each Tag)';
-
-    // if (window.mobileAndTabletcheck())
-    //     $('.chips-placeholder input').css('min-width', '100% !important');
-
-    $('.chips-placeholder').chips({
-        placeholder,
-        secondaryPlaceholder: '+Tag',
-        onChipAdd: modifyChipsWidth,
-        onChipDelete: checkChipsWidth
-    });
-
+    chipsInit();
     upload = new FileUploadWithPreview('uploadImage');
 });
 
@@ -93,20 +71,35 @@ function actionIconsInit() {
     // }).on('mouseup', function() {
     //     $(this).toggleClass('heart-active');
     // });
+}
 
-    $('i.fa-heart.like').on('mousedown', function() {
-        $(this).toggleClass('heart-active');
-    }).on('mouseup', function() {
-        if ($(this).hasClass('far')) {
-            $(this).removeClass('far');
-            $(this).addClass('fas');
-        } else {
-            $(this).removeClass('fas');
-            $(this).addClass('far');
-        }
-
-        $(this).toggleClass('heart-active');
+function gridInit() {
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true,
+        gutter: '.gutter-sizer'
     });
+
+    modifyGrid();
+}
+
+function chipsInit() {
+    // if (window.mobileAndTabletcheck())
+    //     $('.chips-placeholder input').css('min-width', '100% !important');
+
+    $('.chips-placeholder').chips({
+        placeholder: 'Add Tags (Press Enter After Each Tag)',
+        secondaryPlaceholder: '+Tag',
+        onChipAdd: modifyChipsWidth,
+        onChipDelete: checkChipsWidth
+    });
+}
+
+function characterCounterInit() {
+    $('input.comment').characterCounter();
+    $('input#title').characterCounter();
+    $('input#description').characterCounter();
 }
 
 function modifyGrid() {
@@ -196,4 +189,72 @@ function updateChipsDataInput() {
 function writeAgo(selector, date) {
     var ago = moment(date).fromNow();
     $(`${selector}`).append(`Posted ${ago}`);
+}
+
+function writeLikes(selector, likes) {
+    var like_text = '';
+    var num;
+
+    if (likes < 1000)  like_text = likes;
+
+    else if (likes < 1000000) {
+        num = +(likes / 1000).toFixed(2);
+        like_text = num + "K";
+    }
+
+    else if (likes < 1000000000) {
+        num = +(likes / 1000000).toFixed(2);
+        like_text = num + "M";
+    }
+
+    else {
+        num = +(likes / 1000000000).toFixed(2);
+        like_text = num + "B";
+    }
+
+    $(`${selector}`).append(like_text);
+}
+
+function toggle_like(postID) {
+    var url;
+
+    var text = $(`#like-text_${postID}`);
+    var icon = $(`#like-icon_${postID}`);
+
+    if (text.text() === '') likes = 0;
+    else likes = parseInt(text.text());
+
+    if (icon.hasClass('far')) {
+        // like
+        icon.removeClass('far');
+        icon.addClass('fas');
+
+        likes++;
+        text.text(`${likes}`);
+
+        url = `${window.location.href}/${postID}/like`;
+
+    } else {
+        // unlike
+        icon.removeClass('fas');
+        icon.addClass('far');
+
+        likes--;
+
+        if (likes == 0) text.text('');
+        else text.text(`${likes}`);
+
+        url = `${window.location.href}/${postID}/unlike`;
+    }
+
+    icon.toggleClass('heart-active');
+
+    $.ajax({
+        type: 'POST',
+        url,
+        dataType: 'json'
+    })
+    .fail((jqXHR, textStatus, err) => {
+        console.log('AJAX error: ', textStatus);
+    });
 }

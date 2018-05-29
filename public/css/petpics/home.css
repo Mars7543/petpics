@@ -33,6 +33,12 @@
     right: 7.5%;
 }
 
+.action-icons .num_likes {
+    color: white;
+    font-size: 2em;
+    display: inline-block;
+}
+
 .action-icons i {
     display: inline-block;
     cursor: pointer;

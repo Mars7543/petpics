@@ -15,7 +15,12 @@ var userSchema = new mongoose.Schema({
     postName      : {
         type: Number,
         default: 0
-    }
+    },
+
+    liked: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    }]
 });
 
 // generates a hash
