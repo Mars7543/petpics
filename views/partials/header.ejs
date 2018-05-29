@@ -16,19 +16,23 @@
         <link rel="stylesheet" href="/static/css/shared/app.css">
 
         <% if (css) { %>
-            <link rel="stylesheet" href="<%= locals.css %>">
+            <link rel="stylesheet" href="<%= css %>">
         <% } %>
 
         <% if (queries) { %>
-            <link rel="stylesheet" href="<%= locals.queries %>">
+            <link rel="stylesheet" href="<%= queries %>">
         <% } %>
 
-        <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="/static/js/materialize.min.js"></script>
-        <script type="text/javascript" src="/static/js/moment.min.js"></script>
-        <script type="text/javascript" src="/static/js/masonry.min.js"></script>
-        <script type="text/javascript" src="/static/js/app.js"></script>
+        <script type="text/javascript" src="/static/js/shared/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="/static/js/shared/materialize.min.js"></script>
+        <script type="text/javascript" src="/static/js/shared/moment.min.js"></script>
+        <script type="text/javascript" src="/static/js/shared/masonry.min.js"></script>
+        <script type="text/javascript" src="/static/js/shared/app.js"></script>
         <script src="https://unpkg.com/file-upload-with-preview"></script>
+
+        <% if (js) { %>
+            <script type="text/javascript" src="<%= js %>"></script>
+        <% } %>
 
     </head>
     <body>

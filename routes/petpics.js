@@ -21,6 +21,9 @@ const s3Bucket = new AWS.S3({
 
 // MAIN VIEW
 router.get('/petpics', middleware.isLoggedIn, (req, res) => {
+    console.log(process.env.AWS_ACCESS_KEY_ID);
+    console.log(process.env.AWS_SECRET_ACCESS_KEY);
+
     Post.find({}).populate('user').populate('comments').exec((err, posts) => {
         if (err) {
             console.log(err);
@@ -30,6 +33,7 @@ router.get('/petpics', middleware.isLoggedIn, (req, res) => {
 
         res.render('petpics/home', {
             css:     '/static/css/petpics/home.css',
+            js:      '/static/js/petpics/home.js',
             queries: '/static/css/petpics/home-queries.css',
             posts
             // images: require('./static_post_data')
@@ -41,6 +45,7 @@ router.get('/petpics', middleware.isLoggedIn, (req, res) => {
 router.get('/petpics/new', middleware.isLoggedIn, (req, res) => {
     res.render('petpics/new', {
         css:     '/static/css/petpics/new.css',
+        js:      '/static/js/petpics/new.js',
         queries: '/static/css/petpics/new-queries.css',
         noAdd: true
     });
