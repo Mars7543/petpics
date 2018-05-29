@@ -130,3 +130,39 @@ function toggle_like(postID) {
         console.log('AJAX error: ', textStatus);
     });
 }
+
+// SEND AJAX REQUEST TO ADD COMMENT
+function add_comment(postID) {
+    var commentInput = $(`#comment_${postID}`);
+    var comment = commentInput.val();
+
+    var url = `${window.location.href}/${postID}/comment/${comment}`;
+
+    $.ajax({
+        type: 'GET',
+        url,
+        complete: (response) => {
+            data = response.responseJSON;
+
+            // alert(JSON.stringify(data));
+            // alert(`Comment ID: ${data._id}\nUser ID: ${data.user._id}\nUsername: ${data.user.username}\nPosted: ${data.posted}`);
+
+            $(`.comments_${postID}`).append(`
+                <blockquote>
+                    ${comment}
+                    <br>
+                    <a href="/users/${data.user._id}">${data.user.username}<i class="material-icons left">account_circle</i></a>
+                    <span id="${data._id}" class="right"></span>
+                </blockquote>
+
+                <script>writeAgo('#${data._id}', '${new Date().toISOString()}');</script>
+            `);
+        }
+    })
+
+    .fail((jqXHR, textStatus, err) => {
+        console.log('AJAX error: ', textStatus);
+    });
+
+    commentInput.val(' ');
+}

@@ -9,7 +9,7 @@ module.exports = mongoose.model('Comment', new mongoose.Schema({
     comment: String,
 
     posted: {
-        type: Date,
-        default: Date.now()
+        type: String,
+        default: new Date().toISOString()
     },
 }));

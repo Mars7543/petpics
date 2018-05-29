@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="comment-wrapper">
-                        <div class="comments">
+                        <div class="comments_<%= post._id %>">
                             <% post.comments.forEach((comment) => { %>
                                 <blockquote>
                                     <%= comment.comment %>
@@ -60,18 +60,16 @@
                     <div class="add-comment">
                         <div class="divider"></div>
 
-                        <form action="/petpics/<%= post._id %>/comment" method="post">
-                            <div class="row" style="margin-bottom: 0 !important; height: 100%;">
-                                <div style="margin-bottom: 0 !important;" class="input-field col s8">
-                                    <input id="comment_<%= post._id %>" data-length="100" class="comment" type="text" name="comment" value="">
-                                    <label for="comment_<%= post._id %>">Comment</label>
-                                </div>
-
-                                <div style="margin-bottom: 0 !important;" class="input-field col s4">
-                                    <button class="btn btn-large btn-comment waves-effect waves-light">Comment</button>
-                                </div>
+                        <div class="row" style="margin-bottom: 0 !important; height: 100%;">
+                            <div style="margin-bottom: 0 !important;" class="input-field col s8">
+                                <input id="comment_<%= post._id %>" data-length="100" class="comment" type="text" name="comment" value="">
+                                <label for="comment_<%= post._id %>">Comment</label>
                             </div>
-                        </form>
+
+                            <div style="margin-bottom: 0 !important;" class="input-field col s4">
+                                <button class="btn btn-large btn-comment waves-effect waves-light" onclick="add_comment('<%= post._id %>')">Comment</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

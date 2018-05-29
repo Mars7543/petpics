@@ -6,7 +6,7 @@ module.exports = mongoose.model('Post', new mongoose.Schema({
     image: String,
 
     tags: [String],
-    
+
     liked_by: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -18,8 +18,8 @@ module.exports = mongoose.model('Post', new mongoose.Schema({
     },
 
     posted: {
-        type: Date,
-        default: Date.now()
+        type: String,
+        default: new Date().toISOString()
     },
 
     comments: [{

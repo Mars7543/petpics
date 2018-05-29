@@ -127,41 +127,6 @@ router.post('/petpics', middleware.isLoggedIn, (req, res) => {
     });
 });
 
-// COMMENT
-router.post('/petpics/:id/comment', middleware.isLoggedIn, (req, res) => {
-    Post.findById(req.params.id, (err, post) => {
-        if (err) {
-            console.log(err);
-            req.flash('error', 'Something went wrong with our servers :( Please try again later');
-            res.redirect('/petpics');
-        } else {
-            Comment.create({user: req.user._id, comment: req.body.comment}, (err, comment) => {
-                if (err) {
-                    console.log(err);
-                    req.flash('error', 'Something went wrong with our servers :( Please try again later');
-                    res.redirect('/petpics');
-                } else {
-                    post.comments.push(comment._id);
-
-                    post.save((err) => {
-                        if (err) {
-                            console.log(err);
-                            req.flash('error', 'Something went wrong with our servers :( Please try again later');
-                        }
-
-                        res.redirect('/petpics');
-                    });
-                }
-            });
-        }
-    });
-});
-
-// EDIT
-router.get('/petpics/:id/edit', middleware.isLoggedIn, (req, res) => {
-
-});
-
 // LIKE & UNLIKE
 router.post('/petpics/:id/:action', middleware.isLoggedIn, (req, res) => {
     Post.findById(req.params.id, (err, post) => {
@@ -206,6 +171,54 @@ router.post('/petpics/:id/:action', middleware.isLoggedIn, (req, res) => {
             });
         }
     });
+});
+
+// COMMENT
+router.get('/petpics/:id/comment/:comment', middleware.isLoggedIn, (req, res) => {
+    Post.findById(req.params.id, (err, post) => {
+        if (err) console.log(err);
+
+        else {
+            Comment.create({user: req.user._id, comment: req.params.comment}, (err, comment) => {
+                if (err) console.log(err);
+
+                else {
+                    post.comments.push(comment._id);
+
+                    console.log({
+                        _id: comment._id,
+                        user:
+                            {
+                                _id: req.user._id,
+                                username: req.user.local.username
+                            },
+                        posted: comment.posted
+                    });
+
+
+                    post.save((err) => {
+                        if (err) console.log(err);
+
+                        else
+                            res.send({
+                                _id: comment._id,
+                                user:
+                                    {
+                                        _id: req.user._id,
+                                        username: req.user.local.username
+                                    },
+                                posted: comment.posted
+                            });
+                    });
+                }
+            });
+        }
+    });
+});
+
+// EDIT
+router.get('/petpics/:id/edit', middleware.isLoggedIn, (req, res) => {
+
 });
 
 // UPDATE
