@@ -144,12 +144,12 @@ footer .footer-copyright {
 /* Queries */
 @media only screen and (max-width: 650px)  {
     #hero-sub-text, #hero-sub-text-2 {
-        font-size: 1.25em;
+        font-size: 1.5em;
     }
 
 }
 
-@media only screen and (max-width: 425px)  {
+@media only screen and (max-width: 520px)  {
     #hero-main-text {
         font-size: 3.5em;
     }
