@@ -104,3 +104,58 @@ button.btn.btn-large.btn-landing {
 .button-wrapper {
     margin-top: -25px;
 }
+
+.successToast {
+    background-color: #2ecc71;
+    color: white;
+    z-index: 2;
+}
+.errorToast {
+    background-color: #ee6e73;
+    font-weight: bold;
+    color: white;
+    z-index: 2;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Footer */
+footer.page-footer {
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding: 0;
+    background-color: transparent;
+}
+
+footer .footer-copyright {
+    padding-left: 25px !important;
+}
+
+/* Queries */
+@media only screen and (max-width: 650px)  {
+    #hero-sub-text, #hero-sub-text-2 {
+        font-size: 1.25em;
+    }
+
+}
+
+@media only screen and (max-width: 425px)  {
+    #hero-main-text {
+        font-size: 3.5em;
+    }
+
+    #hero-sub-text, #hero-sub-text-2 {
+        font-size: 1em;
+    }
+
+}

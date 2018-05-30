@@ -1,90 +1,27 @@
-<% include ../partials/header %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <% include ../partials/head %>
+    </head>
+    <body>
 
-<main>
-
-    <div class="grid">
-        <div class="grid-sizer"></div>
-        <div class="gutter-sizer"></div>
-
-        <% posts.forEach((post) => { %>
-
-            <div class="grid-item card">
-                <div class="card-image">
-                    <div class="action-icons right">
-                        <span id="like-text_<%= post._id %>" class="left num_likes"></span>&nbsp
-
-                        <i id="like-icon_<%= post._id %>" class="<% if (post.liked_by.indexOf(user._id) !== -1) { %> fas <% } else { %> far <% } %> fa-heart like" <% if (!user._id.equals(post.user._id)) { %> onmouseover="$(this).toggleClass('heart-active');" onmouseout="$(this).toggleClass('heart-active');" onmousedown="$(this).toggleClass('heart-active');" onmouseup="toggle_like('<%= post._id %>')" <% } %>></i>
-                        <i class="material-icons show-comments activator right" onclick="setTimeout(function () { $('#comment_<%= post._id %>').focus(); }, 250);">comment</i>
-
-                    </div>
-
-                    <img src="<%= post.image %>" alt="Error Loading Img">
-                </div>
-
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4"><%= post.description %></span>
-
-                    <p class="byUser"><a href="/users/<%= post.user._id %>">By <%= post.user.local.username %><i class="material-icons left">account_circle</i></a><span class="right ago_<%= post._id %>"></span></p>
-                </div>
-
-                <div class="card-reveal">
-                    <div class="image-info">
-                        <span class="card-title grey-text text-darken-4"><%= post.description %><span class="right"><i class="material-icons close-view">close</i></span></span>
-                        <p>
-                            <% post.tags.forEach((tag) => { %>
-                                <div class="chip"><%= tag %></div>
-                            <% }); %>
-                        </p>
-
-                        <p><a href="/users/<%= post.user._id %>">By <%= post.user.local.username %></a><span class="right ago_<%= post._id %>"></span></p>
-
-                        <div class="divider"></div>
-                    </div>
-
-                    <div class="comment-wrapper">
-                        <div class="comments_<%= post._id %>">
-                            <% post.comments.forEach((comment) => { %>
-                                <blockquote>
-                                    <%= comment.comment %>
-                                    <br>
-                                    <a href="/users/<%= comment.user._id %>"><%= comment.user.local.username %><i class="material-icons left">account_circle</i></a>
-                                    <span id="<%= comment._id %>" class="right"></span>
-                                </blockquote>
-
-                                <script>writeAgo('#<%= comment._id %>', '<%= comment.posted %>');</script>
-
-                            <% }); %>
-                        </div>
-                    </div>
-
-                    <div class="add-comment">
-                        <div class="divider"></div>
-
-                        <div class="row" style="margin-bottom: 0 !important; height: 100%;">
-                            <div style="margin-bottom: 0 !important;" class="input-field col s8">
-                                <input id="comment_<%= post._id %>" data-length="100" class="comment" type="text" name="comment" value="">
-                                <label for="comment_<%= post._id %>">Comment</label>
-                            </div>
-
-                            <div style="margin-bottom: 0 !important;" class="input-field col s4">
-                                <button class="btn btn-large btn-comment waves-effect waves-light" onclick="add_comment('<%= post._id %>')">Comment</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="level">
+            <div class="level-left">
+                <header>
+                    <% include ../partials/header %>
+                </header>
             </div>
+        </div>
 
-            <script>
-                <% if (post.liked_by.length !== 0) { %>
-                    writeLikes('#like-text_<%= post._id %>', <%= post.liked_by.length %>);
-                <% } %>
+        <main>
 
-                writeAgo('.ago_<%= post._id %>', '<%= post.posted %>');
-            </script>
 
-        <% }); %>
 
-    </div>
-</main>
+        </main>
 
-<% include ../partials/footer %>
+        <footer>
+            <% include ../partials/footer %>
+        </footer>
+
+    </body>
+</html>

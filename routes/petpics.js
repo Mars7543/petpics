@@ -31,9 +31,7 @@ router.get('/petpics', middleware.isLoggedIn, (req, res) => {
         res.render('petpics/home', {
             css:     '/static/css/petpics/home.css',
             js:      '/static/js/petpics/home.js',
-            queries: '/static/css/petpics/home-queries.css',
             posts
-            // images: require('./static_post_data')
         });
     });
 });

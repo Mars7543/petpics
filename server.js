@@ -54,6 +54,6 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}...`);
 });
 
-// TODO: Allow Users to Comment on Posts
+// TODO: Update View Page to Use Bulma
 // TODO: Make Search Bar Filter Posts by Desc, Tags, & user
 // TODO: Add Side Bar With Search Filter Options, Groups, Friends, etc. and Post button

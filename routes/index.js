@@ -4,12 +4,7 @@ const express   = require('express'),
 
 // Landing Page
 router.get('/', (req, res) => {
-   res.render('landing', {
-       css:      '/static/css/landing/app.css',
-       js:       '/static/js/landing/app.js',
-       queries:  '/static/css/landing/queries.css',
-       nonav: true
-   });
+   res.render('landing');
 });
 
 // Register

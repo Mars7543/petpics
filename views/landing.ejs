@@ -1,89 +1,134 @@
-<% include ./partials/header %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="slider fullscreen" style="z-index: -10">
-    <ul class="slides">
-        <li><img src="/static/img/hero.jpg"></li>
-        <li><img src="/static/img/hero-2.jpg"></li>
-        <li><img src="/static/img/hero-3.jpg"></li>
-    </ul>
-</div>
+        <title>PetPics: Login | Signup</title>
 
-<main class="valign-wrapper">
-    <div class="container hero-text-wrapper center white-text">
-        <h1 id="hero-main-text">PetPics</h1>
-        <h3 id="hero-sub-text">A Fast & Easy Way to View & Share Pet Pictures.</h3>
-        <h3 id="hero-sub-text-2">Explore a Whole World of Adorable Animals!</h3>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500" rel="stylesheet">
 
-        <form id="signup" action="/signup" method="post">
-            <div class="row">
-                <div class="input-field col s6 m3 offset-m3">
-                    <input type="text" name="firstName" id="firstName" class="validate" required>
-                    <label for="firstName">First Name</label>
-                </div>
+        <link rel="icon" type="image/png" href="/static/img/favicon.png">
+        <link rel="stylesheet" href="/static/css/landing/materialize.min.css">
+        <link rel="stylesheet" href="/static/css/landing/app.css">
+    </head>
+    <body>
 
-                <div class="input-field col s6 m3">
-                    <input type="text" name="lastName" id="lastName" class="validate" required>
-                    <label for="lastName">Last Name</label>
-                </div>
+        <div class="slider fullscreen" style="z-index: -10">
+            <ul class="slides">
+                <li><img src="/static/img/hero.jpg"></li>
+                <li><img src="/static/img/hero-2.jpg"></li>
+                <li><img src="/static/img/hero-3.jpg"></li>
+            </ul>
+        </div>
+
+        <main class="valign-wrapper">
+            <div class="container hero-text-wrapper center white-text">
+                <h1 id="hero-main-text">PetPics</h1>
+                <h3 id="hero-sub-text">A Fast & Easy Way to View & Share Pet Pictures.</h3>
+                <h3 id="hero-sub-text-2">Explore a Whole World of Adorable Animals!</h3>
+
+                <form id="signup" action="/signup" method="post">
+                    <div class="row">
+                        <div class="input-field col s6 m4 offset-m2">
+                            <input type="text" name="firstName" id="firstName" class="validate" required>
+                            <label for="firstName">First Name</label>
+                        </div>
+
+                        <div class="input-field col s6 m4">
+                            <input type="text" name="lastName" id="lastName" class="validate" required>
+                            <label for="lastName">Last Name</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12 m8 offset-m2">
+                            <input type="email" name="email" id="email" class="validate" required>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s6 m4 offset-m2">
+                            <input type="text" name="username" id="username" class="validate" required>
+                            <label for="username">Username</label>
+                        </div>
+
+                        <div class="input-field col s6 col m4">
+                            <input type="password" name="password" id="password-signup" class="validate" required>
+                            <label for="password-signup">Password</label>
+                        </div>
+                    </div>
+
+                    <div class="row button-wrapper">
+                        <div class="col s12">
+                            <button class="btn btn-large btn-landing waves-effect waves-light z-depth-5" >Sign up</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m6 offset-m3">Already Have an Account? <a class="change-forms-text" onclick="changeForms()">Login</a></div>
+                    </div>
+                </form>
+
+                <form id="login" class="white-text" action="/login" method="post">
+                    <div class="row">
+                        <div class="input-field col s6 m4 offset-s3 offset-m4">
+                            <input type="text" name="username" id="username-login" class="validate" required>
+                            <label for="username-login">Username or Email</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s6 m4 offset-s3 offset-m4">
+                            <input type="password" name="password" id="password-login" class="validate" required>
+                            <label for="password-login">Password</label>
+                        </div>
+
+                    </div>
+
+                    <div class="row button-wrapper">
+                        <div class="col s12">
+                            <button class="btn btn-large btn-landing waves-effect waves-light z-depth-5">Login</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m6 offset-m3">Don't Have an Account? <a class="change-forms-text" onclick="changeForms()">Sign Up</a></div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="page-footer">
+            <div class="footer-copyright">
+                Copyright ©
+                <script type="text/javascript">
+                    var date = new Date().getFullYear();
+                    document.write(date !== 2018 ? `2018-${date}` : date);
+                </script>
+                PuppyPics All rights reserved.
             </div>
 
-            <div class="row">
-                <div class="input-field col s12 m6 offset-m3">
-                    <input type="email" name="email" id="email" class="validate" required>
-                    <label for="email">Email</label>
-                </div>
-            </div>
+            <script type="text/javascript" src="/static/js/shared/jquery-3.3.1.min.js"></script>
+            <script type="text/javascript" src="/static/js/landing/materialize.min.js"></script>
+            <script type="text/javascript" src="/static/js/landing/app.js"></script>
 
-            <div class="row">
-                <div class="input-field col s6 m3 offset-m3">
-                    <input type="text" name="username" id="username" class="validate" required>
-                    <label for="username">Username</label>
-                </div>
+            <% if (success && success.length !== 0) { %>
 
-                <div class="input-field col s6 col m3">
-                    <input type="password" name="password" id="password-signup" class="validate" required>
-                    <label for="password-signup">Password</label>
-                </div>
-            </div>
+                <script type="text/javascript">
+                    M.toast({html: '<%= success %>', displayLength: 2250, classes: 'successToast'});
+                </script>
 
-            <div class="row button-wrapper">
-                <div class="col s12">
-                    <button class="btn btn-large btn-landing waves-effect waves-light z-depth-5" >Sign up</button>
-                </div>
-            </div>
+            <% } else if (error && error.length !== 0) { %>
 
-            <div class="row">
-                <div class="col s12 m6 offset-m3">Already Have an Account? <a class="change-forms-text" onclick="changeForms()">Login</a></div>
-            </div>
-        </form>
+                <script type="text/javascript">
+                    M.toast({html: '<%= error %>', displayLength: 2750, classes: 'errorToast'});
+                </script>
 
-        <form id="login" class="white-text" action="/login" method="post">
-            <div class="row">
-                <div class="input-field col s6 m4 offset-s3 offset-m4">
-                    <input type="text" name="username" id="username-login" class="validate" required>
-                    <label for="username-login">Username or Email</label>
-                </div>
-            </div>
+            <% } %>
+        </footer>
 
-            <div class="row">
-                <div class="input-field col s6 m4 offset-s3 offset-m4">
-                    <input type="password" name="password" id="password-login" class="validate" required>
-                    <label for="password-login">Password</label>
-                </div>
-
-            </div>
-
-            <div class="row button-wrapper">
-                <div class="col s12">
-                    <button class="btn btn-large btn-landing waves-effect waves-light z-depth-5">Login</button>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col s12 m6 offset-m3">Don't Have an Account? <a class="change-forms-text" onclick="changeForms()">Sign Up</a></div>
-            </div>
-        </form>
-    </div>
-</main>
-
-<% include ./partials/footer %>
+    </body>
+</html>
