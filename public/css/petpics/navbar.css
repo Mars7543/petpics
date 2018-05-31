@@ -1,0 +1,42 @@
+.navbar {
+    min-height: 4.25em;
+    display: flex;
+}
+
+.navbar .navbar-brand-logo {
+    height: 60px;
+    width: 60px;
+    max-height: 60px;
+    max-width: 60px;
+    margin-right: 5px;
+}
+
+.navbar .navbar-center {
+    display: flex;
+}
+
+.navbar .navbar-center * {
+    color: white;
+}
+
+.navbar .navbar-center .navbar-item:hover {
+    background-color: #008AE8;
+    color: white;
+}
+
+.navbar .navbar-user-icon {
+    height: 55px;
+    width: 55px;
+    max-height: 55px;
+    max-width: 55px;
+    border-radius: 27.5px;
+}
+
+.navbar .fas.fa-user-circle {
+    font-size: 2em !important;
+}
+
+.navbar .navbar-item.navbar-item-active {
+    background-color: #008AE8;
+    color: white;
+}

@@ -31,6 +31,7 @@ router.get('/petpics', middleware.isLoggedIn, (req, res) => {
         res.render('petpics/home', {
             css:     '/static/css/petpics/home.css',
             js:      '/static/js/petpics/home.js',
+            title:   'view',
             posts
         });
     });
@@ -41,8 +42,7 @@ router.get('/petpics/new', middleware.isLoggedIn, (req, res) => {
     res.render('petpics/new', {
         css:     '/static/css/petpics/new.css',
         js:      '/static/js/petpics/new.js',
-        queries: '/static/css/petpics/new-queries.css',
-        noAdd: true
+        title:   'new',
     });
 });
 

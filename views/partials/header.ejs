@@ -1,8 +1,55 @@
 <nav class="navbar is-info">
-    <div class="navbar-brand">
+    <div class="navbar-brand is-large">
         <a href="/petpics" class="navbar-item">
-            <h1 class="title has-text-white">&nbspPetPics</h1>
+            <img class="navbar-brand-logo" src="/static/img/favicon-transparent.png" alt="">
+            <h1 class="title has-text-white">PetPics</h1>
         </a>
     </div>
 
+    <div class="navbar-menu">
+        <div class="navbar-start"></div>
+
+        <div class="navbar-center">
+            <% if (locals.title && locals.title === 'view') { %>
+
+                <a href="/petpics" class="navbar-item navbar-item-active is-size-5 has-text-weight-semibold">
+                    <i class="far fa-images"></i>&nbsp View Posts
+                </a>
+
+                <a href="/petpics/new" class="navbar-item is-size-5 has-text-weight-semibold">
+                    <i class="fas fa-upload"></i>&nbsp Upload
+                </a>
+
+            <% } else if (locals.title && locals.title === 'new') { %>
+
+                <a href="/petpics" class="navbar-item is-size-5 has-text-weight-semibold">
+                    <i class="far fa-images"></i>&nbsp View Posts
+                </a>
+
+                <a href="/petpics/new" class="navbar-item navbar-item-active is-size-5 has-text-weight-semibold">
+                    <i class="fas fa-upload"></i>&nbsp Upload
+                </a>
+
+            <% } %>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <div class="navbar-link">
+                    <% if (user.profile_background) { %>
+                        <img class="navbar-user-icon" src="/static/img/profile_background.jpg" alt="User Icon">
+                    <% } else { %>
+                        <i class="fas fa-user-circle"></i>
+                    <% } %>
+                    <p class="has-text-white is-size-5 has-text-weight-semibold" style="margin-left: 10px"><%= user.local.username %></p>
+                </div>
+
+                <div class="navbar-dropdown">
+                    <a href="/users/<%= user._id %>" class="navbar-item is-size-6">My Profile &nbsp<i class="fas fa-user"></i></a>
+                    <div class="navbar-divider"></div>
+                    <a href="/logout" class="navbar-item is-size-6">Logout &nbsp<i class="fas fa-sign-out-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </nav>
