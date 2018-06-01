@@ -40,3 +40,21 @@
     background-color: #008AE8;
     color: white;
 }
+
+footer.footer {
+    box-sizing: border-box;
+    padding: 20px 50px;
+    /* position: fixed; */
+    /* bottom: 0; */
+    width: 100vw;
+}
+
+footer.footer .container .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer.footer .container .content p{
+    margin: 0 !important;
+}

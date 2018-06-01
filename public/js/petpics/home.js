@@ -1,58 +1,54 @@
 $(document).ready(() => {
 
-    gridInit('.grid-item', '.grid-sizer', '.gutter-sizer');
-    $('input.comment').characterCounter();
-
-    // NAVBAR
-    $('.fixed-action-btn').floatingActionButton();
-    $('.dropdown-trigger').dropdown({coverTrigger: false, hover: true});
+    // gridInit('.grid-item', '.grid-sizer', '.gutter-sizer');
+    
 });
 
 // GRID FUNCTIONS
-function gridInit(itemSelector, columnWidth, gutter) {
-    $('.grid').masonry({
-        itemSelector,
-        columnWidth,
-        percentPosition: true,
-        gutter
-    });
-
-    $('.show-comments.activator').click(() => {
-        changeGrid();
-    });
-
-    $('.card-title.activator').click(() => {
-        changeGrid();
-    });
-
-    $('.card-reveal .image-info').click(() => {
-        originalGrid();
-    });
-}
-
-function changeGrid() {
-    $('.grid-sizer')
-        .removeClass('grid-sizer')
-        .addClass('grid-sizer-fullwidth');
-
-    $('.grid-item')
-        .removeClass('grid-item')
-        .addClass('grid-item-fullwidth');
-
-    gridInit('.grid-item-fullwidth', '.grid-sizer-fullwidth', '.gutter-sizer');
-}
-
-function originalGrid() {
-    $('.grid-sizer-fullwidth')
-        .removeClass('grid-sizer-fullwidth')
-        .addClass('grid-sizer');
-
-    $('.grid-item-fullwidth')
-        .removeClass('grid-item-fullwidth')
-        .addClass('grid-item');
-
-    gridInit('.grid-item', '.grid-sizer', '.gutter-sizer');
-}
+// function gridInit(itemSelector, columnWidth, gutter) {
+//     $('.grid').masonry({
+//         itemSelector,
+//         columnWidth,
+//         percentPosition: true,
+//         gutter
+//     });
+//
+//     $('.show-comments.activator').click(() => {
+//         changeGrid();
+//     });
+//
+//     $('.card-title.activator').click(() => {
+//         changeGrid();
+//     });
+//
+//     $('.card-reveal .image-info').click(() => {
+//         originalGrid();
+//     });
+// }
+//
+// function changeGrid() {
+//     $('.grid-sizer')
+//         .removeClass('grid-sizer')
+//         .addClass('grid-sizer-fullwidth');
+//
+//     $('.grid-item')
+//         .removeClass('grid-item')
+//         .addClass('grid-item-fullwidth');
+//
+//     gridInit('.grid-item-fullwidth', '.grid-sizer-fullwidth', '.gutter-sizer');
+// }
+//
+// function originalGrid() {
+//     $('.grid-sizer-fullwidth')
+//         .removeClass('grid-sizer-fullwidth')
+//         .addClass('grid-sizer');
+//
+//     $('.grid-item-fullwidth')
+//         .removeClass('grid-item-fullwidth')
+//         .addClass('grid-item');
+//
+//     gridInit('.grid-item', '.grid-sizer', '.gutter-sizer');
+// }
 
 // WRITE DATE POSTED
 function writeAgo(selector, date) {

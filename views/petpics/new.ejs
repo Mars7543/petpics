@@ -9,8 +9,54 @@
             <% include ../partials/header %>
         </header>
 
-        <main>
+        <main class="section" style="margin-bottom: 20px;">
+            <div class="container">
 
+                <div class="columns">
+                    <div class="column is-6 is-offset-3">
+                        <form id="upload" action="/petpics" method="post" enctype="multipart/form-data">
+                            <div class="field">
+                                <div class="custom-file-container" data-upload-id="uploadImage">
+                                    <label class="label">Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">X</a></label>
+
+                                    <label class="label custom-file-container__custom-file" >
+                                        <input type="file" class="custom-file-container__custom-file__custom-file-input" name="image" accept="media_type" required>
+                                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                    </label>
+
+                                    <div class="custom-file-container__image-preview"></div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label" for="description">Description</label>
+                                <div class="control">
+                                    <input class="input" id="description" type="text" name="description" required>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Tags</label>
+                                <div class="control">
+                                    <input class="input" id="tags" name="tags" placeholder="(e.g. #cute husky #sleeping cat)">
+                                </div>
+                            </div>
+
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <button class="button is-link">Submit</button>
+                                </div>
+
+                                <div class="control">
+                                    <button class="button is-text">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </main>
 
         <footer>

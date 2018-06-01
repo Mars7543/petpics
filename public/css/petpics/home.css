@@ -1,0 +1,198 @@
+.image.is-64x64 i {
+    margin-top: 4px;
+    font-size: 3.5em;
+    color: grey;
+    margin-left: 10px;
+}
+
+.column {
+    display: flex;
+    flex-grow: 0 !important;
+    position: relative !important;
+}
+
+.column .post-image, .overlay {
+    max-width: 400px !important;
+    max-height: 400px !important;
+    width: 400px !important;
+    height: 400px !important;
+    border-radius: 15px;
+    opacity: 1;
+    transition: .25s;
+}
+
+.overlay {
+    position: absolute;
+    top: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0,0,0,0);
+
+    z-index: 2;
+    cursor: pointer;
+
+}
+
+.overlay *{
+    display: none;
+}
+
+
+
+.overlay:hover {
+    background-color: rgba(0,0,0,0.2);
+}
+
+a.subtitle {
+    color: #48dbfb;
+}
+
+a.subtitle:hover {
+    color: #0bade2;
+}
+
+p i.fas.fa-heart {
+    color: #ee5253;
+}
+
+p i.fas.fa-comments {
+    color: #48dbfb;
+}
+
+@media only screen and (max-width: 1300px) {
+    .column .post-image, .overlay {
+        max-height: 450px !important;
+        height: 450px !important;
+        max-width: 450px !important;
+        width: 450px !important;
+        border-radius: 15px;
+        opacity: 1;
+        transition: .25s;
+    }
+}
+
+@media only screen and (max-width: 975px) {
+    .column .post-image, .overlay {
+        max-height: 400px !important;
+        height: 400px !important;
+        max-width: 400px !important;
+        width: 400px !important;
+        border-radius: 15px;
+        opacity: 1;
+        transition: .25s;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 875px) {
+    .column .post-image, .overlay {
+        max-height: 350px !important;
+        height: 350px !important;
+        max-width: 500px !important;
+        width: 350px !important;
+        border-radius: 15px;
+        opacity: 1;
+        transition: .25s;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    .column .post-image, .overlay {
+        max-height: 500px !important;
+        height: 500px !important;
+        max-width: 500px !important;
+        width: 500px !important;
+        border-radius: 15px;
+        opacity: 1;
+        transition: .25s;
+    }
+
+    .column {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    .column .post-image, .overlay {
+        max-height: 500px !important;
+        height: 500px !important;
+        max-width: 500px !important;
+        width: 500px !important;
+        border-radius: 15px;
+        opacity: 1;
+        transition: .25s;
+    }
+
+    .column {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .column .post-image, .overlay {
+        max-height: 425px !important;
+        height: 425px !important;
+        max-width: 425px !important;
+        width: 425px !important;
+        border-radius: 15px;
+        opacity: 1;
+        transition: .25s;
+    }
+
+    .column {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .column .post-image, .overlay {
+        max-height: 375px !important;
+        height: 375px !important;
+        max-width: 375px !important;
+        width: 375px !important;
+        border-radius: 15px;
+        opacity: 1;
+        transition: .25s;
+    }
+
+    .column {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .content {
+        font-size: .75em;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .column .post-image, .overlay {
+        max-height: 275px !important;
+        height: 275px !important;
+        max-width: 275px !important;
+        width: 275px !important;
+        border-radius: 15px;
+        opacity: 1;
+        transition: .25s;
+    }
+
+    .column {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .content {
+        font-size: .75em;
+    }
+}

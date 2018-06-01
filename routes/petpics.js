@@ -67,7 +67,10 @@ router.post('/petpics', middleware.isLoggedIn, (req, res) => {
             var file = files.image;
             var filename = `${req.user.local.username}/${req.user.postName}.${file.name.split('.').pop()}`;
 
-            post.tags   =   fields.tags.split(',');
+            post.tags   =   fields.tags.split('#');
+
+            console.log(post.tags);
+
             post.user    =   req.user._id;
             post.description =   fields.description;
             post.image = `https://s3.us-east-2.amazonaws.com/petpics-posts/${filename}`;
