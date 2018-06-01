@@ -54,6 +54,8 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}...`);
 });
 
-// TODO: Update View Page to Use Bulma
-// TODO: Make Search Bar Filter Posts by Desc, Tags, & user
-// TODO: Add Side Bar With Search Filter Options, Groups, Friends, etc. and Post button
+// TODO: Finish New Page
+// TODO: Make Navbar Burger For Mobile Devices
+// TODO: Make View Page Show All Info When User Click on a Post
+// TODO: Make A Navbar Tab to Show Activity (Maybe a Bell Icon) on User's Posts (Likes Comments Follows etc.)
+// TODO: Make Search Bar to Filter Posts by Desc, Tags, & User

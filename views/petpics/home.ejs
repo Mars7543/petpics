@@ -22,16 +22,7 @@
 
                             <a href="/users/<%= post.user._id %>" class="subtitle is-size-4">@<%= post.user.local.username %></a>
 
-                            <!-- <% if (post.liked_by.length > 0) { %> -->
-
-                                <p class="subtitle is-size-4 has-text-white"><%= post.liked_by.length %>&nbsp<i class="fas fa-heart"></i> &nbsp <%= post.comments.length %>&nbsp<i class="fas fa-comments"></i></p>
-
-                            <!-- <% } else { %> -->
-
-                                <!-- <p class="subtitle is-size-4 has-text-white"><%= post.comments.length %>&nbsp<i class="fas fa-comments"></i></p> -->
-
-                            <!-- <% } %> -->
-
+                            <p class="subtitle is-size-4 has-text-white"><%= post.liked_by.length %>&nbsp<i class="fas fa-heart"></i> &nbsp <%= post.comments.length %>&nbsp<i class="fas fa-comments"></i></p>
                         </div>
                     </div>
 
