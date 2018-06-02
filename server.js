@@ -45,6 +45,12 @@ const pictureRoutes = require('./routes/petpics');
 app.use(indexRoutes);
 app.use(pictureRoutes);
 
+// User Visits a Page That Doesn't Exit
+app.all('*', (req, res) => {
+    req.flash('error', '404: That Page Doesn\'t Exist :(');
+    res.redirect('/');
+});
+
 // server config
 const PORT = process.env.PORT || 8000;
 
@@ -54,7 +60,7 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}...`);
 });
 
-// TODO: Finish New Page
+// TODO: Finish New Page & Make Chips?
 // TODO: Make Navbar Burger For Mobile Devices
 // TODO: Make View Page Show All Info When User Click on a Post
 // TODO: Make A Navbar Tab to Show Activity (Maybe a Bell Icon) on User's Posts (Likes Comments Follows etc.)

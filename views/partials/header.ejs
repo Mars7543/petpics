@@ -1,23 +1,42 @@
-<nav class="navbar is-info">
+<nav class="navbar is-info" role="navigation" aria-label="main navigation">
     <div class="navbar-brand is-large">
         <a href="/petpics" class="navbar-item">
             <img class="navbar-brand-logo" src="/static/img/favicon-transparent.png" alt="">
+
             <h1 class="title has-text-white">PetPics</h1>
+        </a>
+
+        <a role="button" class="navbar-burger burger" onclick="nav_dropdown()" data-target="navbar-menu" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
         </a>
     </div>
 
-    <div class="navbar-menu">
+    <div class="navbar-menu" id="navbar-menu">
         <div class="navbar-start"></div>
 
-        <div class="navbar-center">
-            <% if (locals.title && locals.title === 'view') { %>
+        <div class="navbar-item">
+            <div class="field">
+                <div class="control has-icons-left">
+                    <input style="transition: .25s" class="input" type="search" placeholder="Search">
+
+                    <span class="icon is-small is-left">
+                        <i style="transition: .25s" class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <!-- <% if (locals.title && locals.title === 'view') { %>
 
                 <a href="/petpics" class="navbar-item navbar-item-active is-size-5 has-text-weight-semibold">
-                    <i class="far fa-images"></i>&nbsp View Posts
+                    <i class="far fa-images"></i>
                 </a>
 
                 <a href="/petpics/new" class="navbar-item is-size-5 has-text-weight-semibold">
-                    <i class="fas fa-upload"></i>&nbsp Upload
+                    <i class="fas fa-upload"></i>&nbsp
                 </a>
 
             <% } else if (locals.title && locals.title === 'new') { %>
@@ -30,10 +49,22 @@
                     <i class="fas fa-upload"></i>&nbsp Upload
                 </a>
 
-            <% } %>
-        </div>
+            <% } %> -->
 
-        <div class="navbar-end">
+            <a href="/petpics" class="navbar-item is-size-5 has-text-weight-semibold">
+                <i class="far fa-images"></i>&nbsp
+            </a>
+
+            <a href="/petpics/new" class="navbar-item is-size-5 has-text-weight-semibold">
+                <i class="fas fa-cloud-upload-alt"></i>&nbsp
+            </a>
+
+            <div class="navbar-item" style="padding: 0">
+                <div class="circle">
+                    <i class="fas fa-bell"></i>
+                </div>
+            </div>
+
             <div class="navbar-item has-dropdown is-hoverable">
                 <div class="navbar-link">
                     <% if (user.profile_background) { %>

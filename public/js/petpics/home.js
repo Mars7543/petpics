@@ -1,54 +1,8 @@
 $(document).ready(() => {
 
-    // gridInit('.grid-item', '.grid-sizer', '.gutter-sizer');
-    
-});
 
-// GRID FUNCTIONS
-// function gridInit(itemSelector, columnWidth, gutter) {
-//     $('.grid').masonry({
-//         itemSelector,
-//         columnWidth,
-//         percentPosition: true,
-//         gutter
-//     });
-//
-//     $('.show-comments.activator').click(() => {
-//         changeGrid();
-//     });
-//
-//     $('.card-title.activator').click(() => {
-//         changeGrid();
-//     });
-//
-//     $('.card-reveal .image-info').click(() => {
-//         originalGrid();
-//     });
-// }
-//
-// function changeGrid() {
-//     $('.grid-sizer')
-//         .removeClass('grid-sizer')
-//         .addClass('grid-sizer-fullwidth');
-//
-//     $('.grid-item')
-//         .removeClass('grid-item')
-//         .addClass('grid-item-fullwidth');
-//
-//     gridInit('.grid-item-fullwidth', '.grid-sizer-fullwidth', '.gutter-sizer');
-// }
-//
-// function originalGrid() {
-//     $('.grid-sizer-fullwidth')
-//         .removeClass('grid-sizer-fullwidth')
-//         .addClass('grid-sizer');
-//
-//     $('.grid-item-fullwidth')
-//         .removeClass('grid-item-fullwidth')
-//         .addClass('grid-item');
-//
-//     gridInit('.grid-item', '.grid-sizer', '.gutter-sizer');
-// }
+
+});
 
 // WRITE DATE POSTED
 function writeAgo(selector, date) {
@@ -87,7 +41,7 @@ function toggle_like(postID) {
     var url;
 
     var text = $(`#like-text_${postID}`);
-    var icon = $(`#like-icon_${postID}`);
+    var icon = $(`#like_${postID}`);
 
     if (text.text() === '') likes = 0;
     else likes = parseInt(text.text());
@@ -109,8 +63,7 @@ function toggle_like(postID) {
 
         likes--;
 
-        if (likes == 0) text.text('');
-        else text.text(`${likes}`);
+        text.text(`${likes}`);
 
         url = `${window.location.href}/${postID}/unlike`;
     }
@@ -131,6 +84,7 @@ function toggle_like(postID) {
 function add_comment(postID) {
     var commentInput = $(`#comment_${postID}`);
     var comment = commentInput.val();
+    var comment_number_text = $(`#comment-text_${postID}`);
 
     var url = `${window.location.href}/${postID}/comment/${comment}`;
 
@@ -141,24 +95,18 @@ function add_comment(postID) {
             data = response.responseJSON;
 
             // alert(JSON.stringify(data));
-            // alert(`Comment ID: ${data._id}\nUser ID: ${data.user._id}\nUsername: ${data.user.username}\nPosted: ${data.posted}`);
+            if ($(`#no-comments_${postID}`).length) {
+                $(`#comments_${postID}`).empty();
+            }
 
-            $(`.comments_${postID}`).append(`
-                <blockquote>
-                    ${comment}
-                    <br>
-                    <a href="/users/${data.user._id}">${data.user.username}<i class="material-icons left">account_circle</i></a>
-                    <span id="${data._id}" class="right"></span>
-                </blockquote>
-
-                <script>writeAgo('#${data._id}', '${new Date().toISOString()}');</script>
-            `);
+            $(`#comments_${postID}`).append(`<strong>${data.user.username}:</strong> ${comment}`);
         }
     })
 
     .fail((jqXHR, textStatus, err) => {
         console.log('AJAX error: ', textStatus);
     });
-
+    
+    comment_number_text.text(parseInt(comment_number_text.text()) + 1);
     commentInput.val(' ');
 }

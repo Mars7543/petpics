@@ -22,7 +22,86 @@
 
                             <a href="/users/<%= post.user._id %>" class="subtitle is-size-4">@<%= post.user.local.username %></a>
 
-                            <p class="subtitle is-size-4 has-text-white"><%= post.liked_by.length %>&nbsp<i class="fas fa-heart"></i> &nbsp <%= post.comments.length %>&nbsp<i class="fas fa-comments"></i></p>
+                            <p class="subtitle is-size-4 has-text-white"><span id="like-text_<%= post._id %>"><%= post.liked_by.length %></span>&nbsp<i class="fas fa-heart"></i> &nbsp <span id="comment-text_<%= post._id %>"><%= post.comments.length %></span>&nbsp<i class="fas fa-comments"></i></p>
+                        </div>
+                    </div>
+
+                    <div id="modal_<%= post._id %>" class="modal">
+                        <div id="modal-background_<%= post._id %>" class="modal-background"></div>
+
+                        <div class="modal-columns columns is-gapless is-centered" style="width: 100vw">
+                            <!-- Image -->
+                            <div class="column is-5">
+                                <img style="width: 100% !important" src="<%= post.image %>">
+                            </div>
+
+                            <!-- Comments -->
+                            <div class="column is-4">
+                                <div class="card" style="width: 100%">
+                                    <div id="chead_<%= post._id %>" class="card-header">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <figure class="image is-64x64">
+                                                    <img src="https://source.unsplash.com/random/96x96" alt="Placeholder image">
+                                                </figure>
+                                            </div>
+
+                                            <div class="media-content">
+                                                <div class="content">
+                                                    <p class="title is-4"><%= post.user.firstName[0].toUpperCase() + post.user.firstName.slice(1) + " " + post.user.lastName[0].toUpperCase() + post.user.lastName.slice(1) %></p>
+                                                    <a class="subtitle is-6">@<%= post.user.local.username %></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="media-right">
+                                                <i id="modal-close_<%= post._id %>" style="font-weight: 700" class="fas fa-times"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="ccontent_<%= post._id %>" class="card-content">
+                                        <div class="info">
+                                            <p class="is-size-8" style="margin-bottom: 5px"><%= post.description %></p>
+
+                                            <% post.tags.forEach((tag) => {
+                                                if (tag !== '' && tag !== ' ') { %>
+                                                    <a style="color: #0bade2; text-decoration: none" class="tag is-rounded">#<%= tag %></a>
+                                                <% }
+                                            }); %>
+                                        </div>
+
+                                        <div id="comments_<%= post._id %>" class="comments">
+                                            <% if (post.comments.length == 0) { %>
+                                                <p id="no-comments_<%= post._id %>" style="text-align: center; margin-top: 25%" class="title">Be The First to Comment!</p>
+                                            <% } else {
+                                                post.comments.forEach((comment) => { %>
+                                                    <p style="margin-top: 5px;">
+                                                        <strong><%= comment.user.local.username %>:</strong> <%= comment.comment %>
+                                                    </p>
+                                                <% });
+                                            } %>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer" id="cfoot_<%= post._id %>">
+                                        <div class="field has-addons" style="width: 100%; display: flex; justify-content: center">
+                                            <div class="control">
+                                                <a class="button" onclick="toggle_like('<%= post._id %>')">
+                                                    <i id="like_<%= post._id %>" class="<% if (post.liked_by.indexOf(user._id) !== -1) { %> fas <% } else { %> far <% } %> fa-heart"></i>
+                                                </a>
+                                            </div>
+
+                                            <div class="control" style="width: 70%">
+                                                <input id="comment_<%= post._id %>"type="text" class="input">
+                                            </div>
+
+                                            <div class="control">
+                                                <a class="button" onclick="add_comment('<%= post._id %>')"><i style="color: #0bade2" class="fas fa-comment"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -39,8 +118,26 @@
             <% posts.forEach((post) => { %>
                 $("#overlay_<%= post._id %>").hover(() => {
                     $("#overlay_<%= post._id %> *").fadeToggle(250);
+                    $("#overlay_<%=post._id %> *").css('display', 'inline-block');
                 }, () => {
                     $("#overlay_<%= post._id %> *").fadeToggle(250);
+                });
+
+                $("#overlay_<%= post._id %>").click(() => {
+                    $("body").css("overflow-y", "hidden");
+
+                    $("#modal_<%= post._id %>").addClass('is-active');
+
+                    var head_height = parseInt($("#chead_<%= post._id %>").css('height').slice(0, -2));
+                    var foot_height = parseInt($("#cfoot_<%= post._id %>").css('height').slice(0, -2));
+                    var takenSpace = (head_height + foot_height) + "px";
+
+                    $("#ccontent_<%= post._id %>").css('height',`calc(100% - ${takenSpace})`);
+                });
+
+                $("#modal-background_<%= post._id %>, i#modal-close_<%= post._id %>").click(() => {
+                    $("body").css("overflow-y", "auto");
+                    $("#modal_<%= post._id %>").removeClass('is-active');
                 });
             <% }); %>
         </script>

@@ -4,6 +4,9 @@ const express   = require('express'),
 
 // Landing Page
 router.get('/', (req, res) => {
+    if (req.isAuthenticated())
+        res.redirect('/petpics');
+        
    res.render('landing');
 });
 
