@@ -1,3 +1,30 @@
+.is-grid {
+    display: grid;
+    grid-template-columns: 10% 45% 35% 10%;
+    grid-template-rows: 10% 80% 10%;
+    overflow-y: scroll;
+}
+
+.post-picture {
+    z-index: 1;
+
+    grid-column-start: 2;
+    grid-column-end: 2;
+
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.post-info {
+    z-index: 1;
+
+    grid-column-start: 3;
+    grid-column-end: 3;
+
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
 .image.is-64x64 i {
     margin-top: 4px;
     font-size: 3.5em;
@@ -142,7 +169,7 @@ p i.fas.fa-comments {
     }
 }
 
-@media only screen and (max-width: 975px) {
+@media only screen and (max-width: 1100px) {
     .column .post-image, .overlay {
         max-height: 400px !important;
         height: 400px !important;
@@ -152,6 +179,34 @@ p i.fas.fa-comments {
         opacity: 1;
         transition: .25s;
     }
+
+    .is-grid {
+        display: grid;
+        grid-template-columns: 10% 80% 10%;
+        grid-template-rows: 5vh 70vh 70vh 5vh;
+        overflow-y: scroll;
+    }
+
+    .post-picture {
+        display: grid;
+
+        grid-column-start: 2;
+        grid-column-end: 2;
+
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .post-info {
+        display: grid;
+
+        grid-column-start: 2;
+        grid-column-end: 2;
+
+        grid-row-start: 3;
+        grid-row-end: 3;
+    }
+
 
     .content {
         display: flex;
@@ -205,6 +260,35 @@ p i.fas.fa-comments {
     }
 }
 
+@media only screen and (max-width: 650px) {
+    .is-grid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 70vh 70vh;
+        overflow-y: scroll;
+    }
+
+    .post-picture {
+        display: grid;
+
+        grid-column-start: 1;
+        grid-column-end: 1;
+
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+
+    .post-info {
+        display: grid;
+
+        grid-column-start: 1;
+        grid-column-end: 1;
+
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+}
+
 @media only screen and (max-width: 550px) {
     .column .post-image, .overlay {
         max-height: 425px !important;
@@ -222,7 +306,7 @@ p i.fas.fa-comments {
     }
 }
 
-@media only screen and (max-width: 550px) {
+/* @media only screen and (max-width: 550px) {
     .column .post-image, .overlay {
         max-height: 375px !important;
         height: 375px !important;
@@ -241,7 +325,7 @@ p i.fas.fa-comments {
     .content {
         font-size: .75em;
     }
-}
+} */
 
 @media only screen and (max-width: 400px) {
     .column .post-image, .overlay {

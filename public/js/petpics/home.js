@@ -106,7 +106,7 @@ function add_comment(postID) {
     .fail((jqXHR, textStatus, err) => {
         console.log('AJAX error: ', textStatus);
     });
-    
+
     comment_number_text.text(parseInt(comment_number_text.text()) + 1);
     commentInput.val(' ');
 }

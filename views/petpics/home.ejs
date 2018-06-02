@@ -29,27 +29,32 @@
                     <div id="modal_<%= post._id %>" class="modal">
                         <div id="modal-background_<%= post._id %>" class="modal-background"></div>
 
-                        <div class="modal-columns columns is-gapless is-centered" style="width: 100vw">
+                        <div class="is-grid" style="width: 100vw; height: 100vh">
                             <!-- Image -->
-                            <div class="column is-5">
-                                <img style="width: 100% !important" src="<%= post.image %>">
+                            <div class="post-picture">
+                                <img style="height: 100% !important; width: 100% !important" src="<%= post.image %>">
                             </div>
 
                             <!-- Comments -->
-                            <div class="column is-4">
-                                <div class="card" style="width: 100%">
+                            <div class="post-info">
+                                <div class="card" style="width: 100%; height: 100%;">
                                     <div id="chead_<%= post._id %>" class="card-header">
                                         <div class="media">
                                             <div class="media-left">
                                                 <figure class="image is-64x64">
-                                                    <img src="https://source.unsplash.com/random/96x96" alt="Placeholder image">
+                                                    <% if (!post.user.profile_background) { %>
+                                                        <i class="fas fa-user-circle" style="font-size: 3.35em"></i>
+                                                        <!-- <img src="https://source.unsplash.com/random/96x96"> -->
+                                                    <% } else { %>
+                                                        <img src="<%= post.user.profile_background %>">
+                                                    <% } %>
                                                 </figure>
                                             </div>
 
                                             <div class="media-content">
                                                 <div class="content">
                                                     <p class="title is-4"><%= post.user.firstName[0].toUpperCase() + post.user.firstName.slice(1) + " " + post.user.lastName[0].toUpperCase() + post.user.lastName.slice(1) %></p>
-                                                    <a class="subtitle is-6">@<%= post.user.local.username %></a>
+                                                    <a style="margin-top: 0" class="subtitle is-6">@<%= post.user.local.username %></a>
                                                 </div>
                                             </div>
 
